@@ -5,6 +5,7 @@ export function migrate() {
     `
             CREATE TABLE IF NOT EXISTS posts (
                 post_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                post_slug TEXT NOT NULL,
                 post_title TEXT NOT NULL,
                 post_content TEXT NOT NULL,
                 post_date TEXT NOT NULL,
