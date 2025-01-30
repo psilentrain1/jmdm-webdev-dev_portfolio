@@ -5,10 +5,10 @@ export const db = new sqlite(path.join(process.cwd(), "folio.db"), {
   fileMustExist: true,
 });
 
-export function query(sql: string) {
+export function dbQuery(sql: string) {
   return db.prepare(sql).all();
 }
 
-export function run(sql: string) {
+export function dbRun(sql: string) {
   return db.prepare(sql).run();
 }
