@@ -61,6 +61,7 @@ export default function useGetPostList(postSet: postSet) {
 
   useEffect(() => {
     getPosts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return { posts, postLoading };
@@ -109,6 +110,7 @@ export function useGetPost(postSet: postSet) {
 
   useEffect(() => {
     getPost();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return { post, postLoading };
