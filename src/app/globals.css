@@ -18,6 +18,7 @@
 
   --txt-light: var(--clr-primary-50);
   --txt-dark: var(--clr-primary-950);
+  --txt-small: #777;
 
   --link-hover-light: var(--clr-primary-200);
   --link-hover-dark: var(--clr-primary-600);
@@ -36,7 +37,7 @@
   --font-heading-4: 1.2rem Helvetica, sans-serif;
   --font-body-text: 16px Georgia, serif;
   --font-article-link: 20px bold Helvetica, sans-serif;
-  --font-small-text: 12px Georgia, serif;
+  --font-small-text: 0.9rem Georgia, serif;
 }
 
 * {
@@ -47,6 +48,7 @@
 
 body {
   background-color: #c3c3c3;
+  font: var(--font-body-text);
 }
 
 h1 {

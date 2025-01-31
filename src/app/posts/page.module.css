@@ -62,6 +62,41 @@
   background-color: var(--clr-primary-50);
 }
 
+.posts__main h2 {
+  margin-bottom: 20px;
+}
+
+.postlist {
+  margin-bottom: 20px;
+}
+
+.postlist__date {
+  font: var(--font-small-text);
+  color: var(--txt-small);
+}
+
+.postlist__title {
+  font: var(--font-article-link);
+  font-weight: 600;
+}
+
+.postlist__title a,
+.postlist__title a:visited {
+  color: var(--txt-dark);
+}
+
+.postlist__title a:hover {
+  color: var(--link-hover-dark);
+}
+
+.postlist__excerpt {
+}
+
+.postlist__category {
+  font: var(--font-small-text);
+  color: var(--txt-small);
+}
+
 /* SIDEBAR */
 .posts__sidebar {
   display: flex;
