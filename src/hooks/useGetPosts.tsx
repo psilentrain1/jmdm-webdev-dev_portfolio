@@ -7,6 +7,16 @@ interface postSet {
   option: string;
 }
 
+interface Post {
+  post_id: number;
+  post_slug: string;
+  post_title: string;
+  post_content: string;
+  post_date: string;
+  post_category: string;
+  post_tags: string;
+}
+
 export default function useGetPostList(postSet: postSet) {
   const [posts, setPosts] = useState<JSX.Element[]>([]);
   const [postLoading, setPostLoading] = useState(true);
@@ -56,4 +66,48 @@ export default function useGetPostList(postSet: postSet) {
   return { posts, postLoading };
 }
 
-export function useGetPost(postSet: postSet) {}
+export function useGetPost(postSet: postSet) {
+  const [post, setPost] = useState<Post>();
+  const [postLoading, setPostLoading] = useState(true);
+
+  let apiCall: string;
+  if (postSet.group === "all") {
+    apiCall = "/api";
+  } else if (postSet.group === "category") {
+    apiCall = `/api`;
+  } else if (postSet.group === "tag") {
+    apiCall = `/api`;
+  } else if (postSet.group === "single") {
+    apiCall = `/api/post/${postSet.option}`;
+  } else {
+    apiCall = "/api";
+  }
+
+  async function getPost() {
+    try {
+      await fetch(apiCall)
+        .then((res) => res.json())
+        .then((data) => {
+          setPost({
+            post_id: data[0].post_id,
+            post_slug: data[0].post_slug,
+            post_title: data[0].post_title,
+            post_content: data[0].post_content,
+            post_date: data[0].post_date,
+            post_category: data[0].post_category,
+            post_tags: data[0].post_tags,
+          });
+        });
+    } catch (error) {
+      console.error("Error", error);
+    } finally {
+      setPostLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    getPost();
+  }, []);
+
+  return { post, postLoading };
+}

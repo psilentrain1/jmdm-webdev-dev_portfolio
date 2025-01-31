@@ -90,11 +90,40 @@
 }
 
 .postlist__excerpt {
+  display: -webkit-box;
+  line-clamp: 2;
+  box-orient: vertical;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .postlist__category {
   font: var(--font-small-text);
   color: var(--txt-small);
+}
+
+.post__date,
+.post__category,
+.post__tags {
+  font: var(--font-small-text);
+  color: var(--txt-small);
+}
+
+.post__date {
+  margin-bottom: 10px;
+}
+
+.post__title {
+}
+
+.post__content {
+}
+
+.post__category {
+  margin-top: 10px;
+}
+
+.post__tags {
 }
 
 /* SIDEBAR */
