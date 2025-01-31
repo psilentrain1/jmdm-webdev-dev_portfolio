@@ -1,6 +1,5 @@
 "use client";
 import useGetCategories from "@/hooks/useGetCategories";
-import styles from "../page.module.css";
 
 export default function Category() {
   const { categories, categoryLoading } = useGetCategories();
