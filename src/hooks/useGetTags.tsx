@@ -13,7 +13,7 @@ export default function useGetTags() {
         .then((data) => {
           for (let i = 0; i < data.length; i++) {
             tagList.push(
-              <Link key={i} href={`/tag/${data[i]}`}>
+              <Link key={i} href={`/posts/tag/${data[i]}`}>
                 {data[i]}
               </Link>
             );
@@ -47,7 +47,7 @@ export function useGetTagsShort() {
         .then((data) => {
           for (let i = 0; i < 20; i++) {
             tagList.push(
-              <Link key={i} href={`/tag/${data[i]}`}>
+              <Link key={i} href={`/posts/tag/${data[i]}`}>
                 {data[i]}
               </Link>
             );

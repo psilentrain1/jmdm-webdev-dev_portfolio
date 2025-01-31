@@ -14,7 +14,7 @@ export default function useGetCategories() {
           for (let i = 0; i < data.length; i++) {
             categoryList.push(
               <li key={i}>
-                <Link href={`/category/${data[i].post_category}`}>{data[i].post_category}</Link>
+                <Link href={`/posts/category/${data[i].post_category}`}>{data[i].post_category}</Link>
               </li>
             );
           }

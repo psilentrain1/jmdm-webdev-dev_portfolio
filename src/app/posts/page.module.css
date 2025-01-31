@@ -10,10 +10,12 @@
 .posts__left {
   display: flex;
   flex-direction: column;
+  width: calc(100% - 250px);
 }
 
 .posts__right {
   background-color: var(--clr-primary-600);
+  width: 250px;
 }
 
 /* HEADER */
@@ -64,7 +66,6 @@
 .posts__sidebar {
   display: flex;
   flex-direction: column;
-  width: 250px;
   padding: 20px 0;
 }
 
