@@ -110,14 +110,11 @@
 }
 
 .home__title h1 {
-  font-size: 6rem;
-  font-weight: 600;
   line-height: 3rem;
 }
 
 .home__title span {
   font: var(--font-subhead-1);
-  font-size: 3rem;
 }
 
 .home__about,
