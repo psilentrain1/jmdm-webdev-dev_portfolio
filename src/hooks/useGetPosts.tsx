@@ -14,7 +14,7 @@ interface Post {
   post_content: string;
   post_date: string;
   post_category: string;
-  post_tags: string;
+  post_tags: string[];
 }
 
 export default function useGetPostList(postSet: postSet) {
@@ -88,6 +88,8 @@ export function useGetPost(postSet: postSet) {
       await fetch(apiCall)
         .then((res) => res.json())
         .then((data) => {
+          const tags = data[0].post_tags.split(", ");
+
           setPost({
             post_id: data[0].post_id,
             post_slug: data[0].post_slug,
@@ -95,7 +97,7 @@ export function useGetPost(postSet: postSet) {
             post_content: data[0].post_content,
             post_date: data[0].post_date,
             post_category: data[0].post_category,
-            post_tags: data[0].post_tags,
+            post_tags: tags,
           });
         });
     } catch (error) {

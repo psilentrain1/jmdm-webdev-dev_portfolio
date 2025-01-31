@@ -104,9 +104,19 @@
 
 .post__date,
 .post__category,
-.post__tags {
+.post__category a,
+.post__category a:visited,
+.post__tags,
+.post__tags a,
+.post__tags a:visited {
   font: var(--font-small-text);
   color: var(--txt-small);
+  transition: color 0.3s ease;
+}
+
+.post__category a:hover,
+.post__tags a:hover {
+  color: var(--link-hover-dark);
 }
 
 .post__date {
@@ -124,6 +134,11 @@
 }
 
 .post__tags {
+}
+
+.post__tags__tag:not(:last-child)::after {
+  content: ", ";
+  text-decoration: none;
 }
 
 /* SIDEBAR */
