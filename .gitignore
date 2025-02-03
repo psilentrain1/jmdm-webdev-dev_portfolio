@@ -43,6 +43,6 @@ next-env.d.ts
 .vscode
 
 # Database
-folio.db
+*.db
 
 TODO.md
