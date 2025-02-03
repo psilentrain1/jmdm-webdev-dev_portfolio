@@ -9,7 +9,7 @@ export default function PostsByTag() {
   return (
     <>
       <h2>
-        Tag: <span id="tagName">{params.tag}</span>
+        Tag: <span id="tagName">{decodeURI(params.tag)}</span>
       </h2>
       {postLoading ? <span>Loading...</span> : posts}
     </>
