@@ -3,6 +3,7 @@ import { useGetPost } from "@/hooks/useGetPosts";
 import { useParams } from "next/navigation";
 import styles from "../page.module.css";
 import Link from "next/link";
+import showdown from "showdown";
 
 export default function SinglePost() {
   const params = useParams<{ slug: string }>();
@@ -10,6 +11,14 @@ export default function SinglePost() {
 
   //   const tags = post?.post_tags.map((tag)=> )
   //   console.log(post.post_tags);
+  const converter = new showdown.Converter();
+
+  function renderMarkdown() {
+    const renderedHTML = converter.makeHtml(post?.post_content || "");
+    return { __html: renderedHTML };
+  }
+
+  const postContent = renderMarkdown();
 
   if (postLoading) {
     return <span>Loading...</span>;
@@ -19,7 +28,7 @@ export default function SinglePost() {
     <>
       <h2>{post?.post_title}</h2>
       <div className={styles.post__date}>Posted: {post?.post_date}</div>
-      <div className={styles.post__content}>{post?.post_content}</div>
+      <div id={"postContent"} className={styles.post__content} dangerouslySetInnerHTML={postContent}></div>
       <div className={styles.post__category}>
         Category: <Link href={`/posts/category/${post?.post_category}`}>{post?.post_category}</Link>
       </div>
@@ -31,7 +40,6 @@ export default function SinglePost() {
           </Link>
         ))}
       </div>
-      {/* <div>{post.post_tags}</div> */}
     </>
   );
 }

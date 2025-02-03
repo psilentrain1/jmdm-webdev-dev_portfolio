@@ -136,10 +136,10 @@
 .post__tags {
 }
 
-/* .post__tags__tag:not(:last-child)::after {
+.post__tags__tag:not(:last-child)::after {
   content: ", ";
   text-decoration: none;
-} */
+}
 
 /* SIDEBAR */
 .posts__sidebar {

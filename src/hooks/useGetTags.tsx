@@ -21,10 +21,8 @@ export default function useGetTags(tagStyle: string) {
           for (const [tag, count] of Object.entries(data).slice(0, tagLength)) {
             const tagURI = encodeURI(tag);
             tagList.push(
-              <li>
-                <Link key={tag} href={`/posts/tag/${tagURI}`}>
-                  {tag}
-                </Link>
+              <li key={tag}>
+                <Link href={`/posts/tag/${tagURI}`}>{tag}</Link>
                 <span
                   style={{
                     marginLeft: "10px",

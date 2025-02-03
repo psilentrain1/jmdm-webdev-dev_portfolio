@@ -10,8 +10,6 @@ export default function PostsLayout({ children }: { children: React.ReactNode })
   const { tags, tagsLoading } = useGetTags("sidebar");
 
   return (
-    // <html lang="en">
-    // <body>
     <div className={styles.posts}>
       <div className={styles.posts__left}>
         <header className={styles.posts__header}>
@@ -68,7 +66,5 @@ export default function PostsLayout({ children }: { children: React.ReactNode })
         </div>
       </div>
     </div>
-    // </body>
-    // </html>
   );
 }

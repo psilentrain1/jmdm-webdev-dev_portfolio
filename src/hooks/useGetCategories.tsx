@@ -20,7 +20,7 @@ export default function useGetCategories(categoryStyle: string) {
 
           for (let i = 0; i < catLength; i++) {
             categoryList.push(
-              <li key={i}>
+              <li key={`category-${i}`}>
                 <Link href={`/posts/category/${data[i].post_category}`}>{data[i].post_category}</Link>
                 <span
                   style={{
