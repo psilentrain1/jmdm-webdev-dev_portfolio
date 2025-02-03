@@ -1,7 +1,7 @@
 import { dbQuery } from "../../database";
 
 // Get all posts by category
-export async function GET(req: Request, { params }: { params: { category: string } }) {
+export async function GET(req: Request, { params }: { params: Promise<{ category: string }> }) {
   const { category } = await params;
   const posts = `SELECT * FROM posts WHERE post_category LIKE '${category}'`;
 

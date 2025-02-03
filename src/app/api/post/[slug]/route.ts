@@ -1,7 +1,7 @@
 import { dbQuery } from "../../database";
 
 // Get one post
-export async function GET(req: Request, { params }: { params: { slug: string } }) {
+export async function GET(req: Request, { params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = `SELECT * FROM posts WHERE post_slug = '${slug}'`;
 

@@ -1,7 +1,7 @@
 import { dbQuery } from "../../database";
 
 // Get all posts by tag
-export async function GET(req: Request, { params }: { params: { tag: string } }) {
+export async function GET(req: Request, { params }: { params: Promise<{ tag: string }> }) {
   const { tag } = await params;
   const posts = `SELECT * FROM posts WHERE post_tags LIKE '%${tag}%'`;
 
