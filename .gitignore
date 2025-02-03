@@ -42,4 +42,7 @@ next-env.d.ts
 
 .vscode
 
+# Database
+folio.db
+
 TODO.md
