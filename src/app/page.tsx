@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./page.module.css";
 import { FaGithub, FaLinkedin, FaReddit } from "react-icons/fa";
-import { SiBluesky, SiExpress, SiReact, SiSqlite, SiTypescript } from "react-icons/si";
+import { SiBluesky } from "react-icons/si";
 
 export default function Home() {
   return (
@@ -22,9 +22,10 @@ export default function Home() {
                   <li>
                     <Link href="/#about">About</Link>
                   </li>
-                  <li>
+                  {/* Temporarily disabling until there is content for this section. */}
+                  {/* <li>
                     <Link href="/#projects">Projects</Link>
-                  </li>
+                  </li> */}
                   <li>
                     <Link href="/posts">Posts</Link>
                   </li>
@@ -64,7 +65,8 @@ export default function Home() {
                 <Link href="/#">Read more about me</Link>
               </span>
             </section>
-            <section className={styles.home__projects}>
+            {/* Temp disabling until there is content to put here */}
+            {/* <section className={styles.home__projects}>
               <h3 id="projects">A selection of projects</h3>
               <div className={styles.home__project_container}>
                 <div className={styles.home__project_header}>
@@ -86,7 +88,7 @@ export default function Home() {
               <span className={styles.home__sectionlink}>
                 <Link href="/#">View more projects</Link>
               </span>
-            </section>
+            </section> */}
             <section className={styles.home__contacts}>
               <h3 id="contact">Contact me!</h3>
               <p>
