@@ -10,7 +10,8 @@ export function migrate() {
                 post_content TEXT NOT NULL,
                 post_date TEXT NOT NULL,
                 post_category TEXT NOT NULL,
-                post_tags TEXT);
+                post_tags TEXT,
+                post_status TEXT NOT NULL);
 
             CREATE TABLE IF NOT EXISTS users (
                 user_id INTEGER PRIMARY KEY AUTOINCREMENT,
