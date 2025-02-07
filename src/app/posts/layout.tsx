@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import "../globals.css";
+import "highlight.js/styles/foundation.css";
 import styles from "./page.module.css";
 import useGetCategories from "@/hooks/useGetCategories";
 import useGetTags from "@/hooks/useGetTags";

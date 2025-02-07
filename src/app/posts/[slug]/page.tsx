@@ -4,17 +4,29 @@ import { useParams } from "next/navigation";
 import styles from "../page.module.css";
 import Link from "next/link";
 import showdown from "showdown";
+import hljs from "highlight.js";
+import python from "highlight.js/lib/languages/python";
+import javascript from "highlight.js/lib/languages/javascript";
+import { useEffect } from "react";
+hljs.registerLanguage("python", python);
+hljs.registerLanguage("javascript", javascript);
 
 export default function SinglePost() {
   const params = useParams<{ slug: string }>();
   const { post, postLoading } = useGetPost({ group: "single", option: params.slug });
 
-  //   const tags = post?.post_tags.map((tag)=> )
-  //   console.log(post.post_tags);
-  const converter = new showdown.Converter();
+  useEffect(() => {
+    hljs.highlightAll();
+  }, [postLoading]);
+
+  const converter = new showdown.Converter({
+    customizedHeaderId: true,
+    disableForced4SpacesIndentedSublists: true,
+  });
 
   function renderMarkdown() {
     const renderedHTML = converter.makeHtml(post?.post_content || "");
+    hljs.highlightAll();
     return { __html: renderedHTML };
   }
 
