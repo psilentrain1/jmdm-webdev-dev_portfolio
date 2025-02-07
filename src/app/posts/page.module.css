@@ -1,0 +1,284 @@
+.posts {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  min-width: 800px;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+.posts__left {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 250px);
+}
+
+.posts__right {
+  background-color: var(--clr-primary-600);
+  width: 250px;
+}
+
+/* HEADER */
+.posts__header {
+  height: 60px;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--clr-primary-600);
+}
+
+.posts__header nav {
+  font-family: Helvetica, sans-serif;
+  font-size: 1.2rem;
+}
+
+.posts__header ul {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  list-style: none;
+}
+
+.posts__header li {
+}
+
+.posts__header a,
+.posts__header a:visited {
+  color: var(--txt-light);
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.posts__header a:hover {
+  color: var(--link-hover-light);
+}
+
+/* MAIN */
+.posts__main {
+  height: calc(100vh - 60px - 30px);
+  padding: 20px 40px;
+  overflow-x: scroll;
+  background-color: var(--clr-primary-50);
+}
+
+.posts__main h2 {
+  margin-bottom: 20px;
+}
+
+.postlist {
+  margin-bottom: 20px;
+}
+
+.postlist__date {
+  font: var(--font-small-text);
+  color: var(--txt-small);
+}
+
+.postlist__title {
+  font: var(--font-article-link);
+  font-weight: 600;
+}
+
+.postlist__title a,
+.postlist__title a:visited {
+  color: var(--txt-dark);
+}
+
+.postlist__title a:hover {
+  color: var(--link-hover-dark);
+}
+
+.postlist__excerpt {
+  display: -webkit-box;
+  line-clamp: 2;
+  box-orient: vertical;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.postlist__category {
+  font: var(--font-small-text);
+  color: var(--txt-small);
+}
+
+.post__date,
+.post__category,
+.post__category a,
+.post__category a:visited,
+.post__tags,
+.post__tags a,
+.post__tags a:visited {
+  font: var(--font-small-text);
+  color: var(--txt-small);
+  transition: color 0.3s ease;
+}
+
+.post__category a:hover,
+.post__tags a:hover {
+  color: var(--link-hover-dark);
+}
+
+.post__date {
+  margin-bottom: 10px;
+}
+
+.post__title {
+}
+
+.post__content {
+  padding: 10px 20px;
+}
+
+.post__content img {
+  display: block;
+  max-width: 80%;
+  max-height: 50vh;
+  margin: 10px auto;
+}
+
+.post__content h3 {
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.post__content h4,
+.post__content hr {
+  margin-top: 15px;
+  margin-bottom: 3px;
+}
+
+.post__content hr {
+  border-top: 2px solid var(--clr-primary-600);
+}
+
+.post__content ul,
+.post__content ol {
+  padding-left: 25px;
+}
+
+.post__content blockquote {
+  padding-left: 20px;
+  border-left: 3px solid var(--clr-primary-600);
+}
+
+.post__content p,
+.post__content pre {
+  margin-bottom: 15px;
+}
+
+.post__content a,
+.post__content a:visited {
+  color: var(--txt-dark);
+  transition: color 0.3s ease;
+}
+
+.post__content a:hover {
+  color: var(--link-hover-dark);
+}
+
+.post__content P > code {
+  padding: 0 3px;
+  background-color: #e3e3e3;
+}
+
+.post__category {
+  margin-top: 10px;
+}
+
+.post__tags {
+}
+
+.post__tags__tag:not(:last-child)::after {
+  content: ", ";
+  text-decoration: none;
+}
+
+/* SIDEBAR */
+.posts__sidebar {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+}
+
+.posts__sidebar,
+.posts__sidebar a,
+.posts__sidebar a:visited {
+  color: var(--txt-light);
+  transition: color 0.3s ease;
+}
+
+.posts__sidebar a:hover {
+  color: var(--link-hover-light);
+}
+
+.posts__brand {
+  text-align: center;
+}
+
+.posts__sidebar__content {
+  padding: 0 20px;
+}
+
+.posts__sidebar__viewall {
+  display: block;
+  margin-top: 10px;
+}
+
+.posts__sidebar__viewall::after {
+  content: " \00bb";
+}
+
+.posts__title {
+  line-height: 1.3rem;
+}
+
+.posts__subtitle {
+  font: var(--font-subhead-2);
+}
+
+.posts__categories,
+.posts__tags {
+  margin-top: 40px;
+}
+
+.posts__categories ul,
+.posts__tags ul {
+  list-style: none;
+}
+
+.posts__taglist {
+  list-style: none;
+}
+
+.posts__taglist li,
+.posts__taglist a,
+.posts__taglist a:visited {
+  color: var(--txt-dark);
+  transition: color 0.3s ease;
+}
+
+.posts__taglist a:hover {
+  color: var(--link-hover-dark);
+}
+
+/* FOOTER */
+.posts__footer {
+  height: 30px;
+  padding: 8px 0;
+  text-align: center;
+  background-color: var(--clr-primary-600);
+}
+
+.posts__footer,
+.posts__footer a,
+.posts__footer a:visited {
+  color: var(--txt-light);
+  transition: color 0.3s ease;
+}
+
+.posts__footer a:hover {
+  color: var(--link-hover-light);
+}
