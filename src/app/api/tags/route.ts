@@ -2,7 +2,7 @@ import { dbQuery } from "../database";
 
 // Get all tags
 export function GET() {
-  const tags = `SELECT post_tags FROM posts`;
+  const tags = `SELECT post_tags FROM posts WHERE post_status = 'published'`;
 
   let status, body;
   try {

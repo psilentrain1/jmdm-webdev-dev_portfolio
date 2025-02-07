@@ -5,6 +5,7 @@ CREATE TABLE posts (
     post_slug TEXT NOT NULL,
     post_title TEXT NOT NULL,
     post_content TEXT NOT NULL,
+    post_excerpt TEXT,
     post_date TEXT NOT NULL,
     post_category TEXT NOT NULL,
     post_tags TEXT,

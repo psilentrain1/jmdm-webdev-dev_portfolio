@@ -2,7 +2,7 @@ import { dbQuery, dbRun } from "../database";
 
 // Get all posts
 export function GET() {
-  const posts = `SELECT * FROM posts`;
+  const posts = `SELECT * FROM posts WHERE post_status = 'published' ORDER BY post_date DESC`;
 
   let status, body;
   try {
@@ -17,6 +17,7 @@ export function GET() {
 }
 
 // Create post
+// TODO: add status and excerpt
 export async function POST(req: Request) {
   const body = await req.json();
   const { title, content, date, category, tags } = body;

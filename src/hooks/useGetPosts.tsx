@@ -45,7 +45,7 @@ export default function useGetPostList(postSet: postSet) {
                 <div className={styles.postlist__title}>
                   <Link href={`/posts/${data[i].post_slug}`}>{data[i].post_title}</Link>
                 </div>
-                <div className={styles.postlist__excerpt}>{data[i].post_content}</div>
+                <div className={styles.postlist__excerpt}>{data[i].post_excerpt}</div>
                 <div className={styles.postlist__category}>{data[i].post_category}</div>
               </article>
             );
