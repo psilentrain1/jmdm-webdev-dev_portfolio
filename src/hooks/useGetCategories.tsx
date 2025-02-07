@@ -13,7 +13,11 @@ export default function useGetCategories(categoryStyle: string) {
         .then((data) => {
           let catLength: number;
           if (categoryStyle === "sidebar") {
-            catLength = 10;
+            if (data.length > 10) {
+              catLength = 10;
+            } else {
+              catLength = data.length;
+            }
           } else {
             catLength = data.length;
           }
