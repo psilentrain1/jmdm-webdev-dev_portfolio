@@ -143,6 +143,20 @@
   margin-bottom: 3px;
 }
 
+.post__content hr {
+  border-top: 2px solid var(--clr-primary-600);
+}
+
+.post__content ul,
+.post__content ol {
+  padding-left: 25px;
+}
+
+.post__content blockquote {
+  padding-left: 20px;
+  border-left: 3px solid var(--clr-primary-600);
+}
+
 .post__content p,
 .post__content pre {
   margin-bottom: 15px;
