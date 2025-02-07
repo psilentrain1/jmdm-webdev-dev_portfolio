@@ -132,6 +132,13 @@
   padding: 10px 20px;
 }
 
+.post__content img {
+  display: block;
+  max-width: 80%;
+  max-height: 50vh;
+  margin: 10px auto;
+}
+
 .post__content h3 {
   margin-top: 20px;
   margin-bottom: 5px;
