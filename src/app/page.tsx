@@ -41,7 +41,7 @@ export default function Home() {
                 <Link href="https://www.linkedin.com/in/james-drake-782a16316/" target="_blank">
                   <FaLinkedin />
                 </Link>
-                <Link href="" target="_blank">
+                <Link href="https://bsky.app/profile/jamesdraketech.bsky.social" target="_blank">
                   <SiBluesky />
                 </Link>
                 <Link href="https://www.reddit.com/user/JamesDrake-Tech/" target="_blank">
