@@ -4,6 +4,11 @@ import styles from "./page.module.css";
 import { FaGithub, FaLinkedin, FaReddit } from "react-icons/fa";
 import { SiBluesky } from "react-icons/si";
 
+export const metadata = {
+  title: "James Drake - Developer",
+  description: "James Drake's Development Portfolio Website",
+};
+
 export default function Home() {
   return (
     <>
