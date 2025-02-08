@@ -179,9 +179,32 @@
   color: var(--link-hover-dark);
 }
 
-.post__content P > code {
+.post__content code:not(pre > code) {
   padding: 0 3px;
   background-color: #e3e3e3;
+}
+
+.post__content thead {
+  background-color: var(--clr-primary-600);
+  color: var(--txt-light);
+  font-family: Helvetica, sans-serif;
+}
+
+.post__content th,
+.post__content td {
+  padding: 5px 10px;
+}
+
+.post__content tbody tr:nth-child(odd) {
+  background-color: var(--clr-primary-100);
+}
+
+.post__content tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+.post__content tbody tr:hover {
+  background-color: var(--clr-primary-200);
 }
 
 .post__category {
