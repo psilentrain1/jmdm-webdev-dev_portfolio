@@ -22,6 +22,7 @@ export default function SinglePost() {
   const converter = new showdown.Converter({
     customizedHeaderId: true,
     disableForced4SpacesIndentedSublists: true,
+    tables: true,
   });
 
   function renderMarkdown() {
