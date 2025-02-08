@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v2.0
+
+1. Added responsive styling and mobile components
+
 ## v1.1
 
 1. Fixed table formatting in posts
