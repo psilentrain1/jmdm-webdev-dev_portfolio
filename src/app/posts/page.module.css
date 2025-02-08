@@ -179,7 +179,7 @@
   color: var(--link-hover-dark);
 }
 
-.post__content P > code {
+.post__content code:not(pre > code) {
   padding: 0 3px;
   background-color: #e3e3e3;
 }
