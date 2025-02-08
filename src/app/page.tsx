@@ -1,65 +1,34 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./page.module.css";
 import { FaGithub, FaLinkedin, FaReddit } from "react-icons/fa";
 import { SiBluesky } from "react-icons/si";
+import { useDeviceType } from "@/hooks/useDeviceType";
+import { FcMenu } from "react-icons/fc";
+import { SlClose } from "react-icons/sl";
+import { useEffect, useRef } from "react";
 
-export const metadata = {
+/* export const metadata = {
   title: "James Drake - Developer",
   description: "James Drake's Development Portfolio Website",
-};
+}; */
 
 export default function Home() {
+  const { isMobile, isDesktop } = useDeviceType();
+
   return (
     <>
       <div className={styles.home__main}>
         <div className={styles.home__page}>
-          <div className={styles.home__sidebar}>
-            <div className={styles.home__sidebar_content}>
-              <div className={styles.home__image}>
-                <Image src="/james.jpg" alt="James Drake" width={200} height={267} />
-              </div>
-              <nav className={styles.home__nav}>
-                <ul>
-                  <li>
-                    <Link href="/">Home</Link>
-                  </li>
-                  <li>
-                    <Link href="/#about">About</Link>
-                  </li>
-                  {/* Temporarily disabling until there is content for this section. */}
-                  {/* <li>
-                    <Link href="/#projects">Projects</Link>
-                  </li> */}
-                  <li>
-                    <Link href="/posts">Posts</Link>
-                  </li>
-                  <li>
-                    <Link href="/#contact">Contact Me</Link>
-                  </li>
-                </ul>
-              </nav>
-              <div className={styles.home__social}>
-                <Link href="https://github.com/psilentrain1" target="_blank">
-                  <FaGithub />
-                </Link>
-                <Link href="https://www.linkedin.com/in/james-drake-782a16316/" target="_blank">
-                  <FaLinkedin />
-                </Link>
-                <Link href="https://bsky.app/profile/jamesdraketech.bsky.social" target="_blank">
-                  <SiBluesky />
-                </Link>
-                <Link href="https://www.reddit.com/user/JamesDrake-Tech/" target="_blank">
-                  <FaReddit />
-                </Link>
-              </div>
-            </div>
-          </div>
+          {isDesktop && <Sidebar />}
+          {isMobile && <Hamburger />}
           <div className={styles.home__content}>
             <section className={styles.home__title}>
               <h1>James Drake</h1>
               <span>Desktop and Web Developer</span>
             </section>
+            {isMobile && <MobileImage />}
             <section className={styles.home__about}>
               <h3 id="about">A little about me</h3>
               <p>
@@ -118,5 +87,141 @@ export default function Home() {
         </div>
       </div>
     </>
+  );
+}
+
+function Sidebar() {
+  return (
+    <>
+      <div className={styles.home__sidebar}>
+        <div className={styles.home__sidebar_content}>
+          <div className={styles.home__image}>
+            <Image src="/james.jpg" alt="James Drake" width={200} height={267} />
+          </div>
+          <nav className={styles.home__nav}>
+            <ul>
+              <li>
+                <Link href="/">Home</Link>
+              </li>
+              <li>
+                <Link href="/#about">About</Link>
+              </li>
+              {/* Temporarily disabling until there is content for this section. */}
+              {/* <li>
+                    <Link href="/#projects">Projects</Link>
+                  </li> */}
+              <li>
+                <Link href="/posts">Posts</Link>
+              </li>
+              <li>
+                <Link href="/#contact">Contact Me</Link>
+              </li>
+            </ul>
+          </nav>
+          <div className={styles.home__social}>
+            <Link href="https://github.com/psilentrain1" target="_blank">
+              <FaGithub />
+            </Link>
+            <Link href="https://www.linkedin.com/in/james-drake-782a16316/" target="_blank">
+              <FaLinkedin />
+            </Link>
+            <Link href="https://bsky.app/profile/jamesdraketech.bsky.social" target="_blank">
+              <SiBluesky />
+            </Link>
+            <Link href="https://www.reddit.com/user/JamesDrake-Tech/" target="_blank">
+              <FaReddit />
+            </Link>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+function Hamburger() {
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  function openMenu() {
+    document.getElementById("mobileMenu")?.classList.add(styles.home__mobile__menu__open);
+  }
+
+  function closeMenu() {
+    document.getElementById("mobileMenu")?.classList.remove(styles.home__mobile__menu__open);
+  }
+
+  function handleLinkClick(e: React.MouseEvent<HTMLDivElement>) {
+    const isLink = (e.target as HTMLElement).tagName === "A";
+
+    if (isLink) {
+      closeMenu();
+    }
+  }
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        closeMenu();
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuRef]);
+
+  return (
+    <>
+      <div className={styles.home__hamburger}>
+        <div className={styles.home__hamburger__icon} onClick={() => openMenu()}>
+          <FcMenu />
+        </div>
+      </div>
+      <div id="mobileMenu" className={styles.home__mobile__menu} ref={menuRef} onClick={handleLinkClick}>
+        <div className={styles.home__mobile__menu__close}>
+          <div onClick={() => closeMenu()}>
+            <SlClose />
+          </div>
+        </div>
+        <ul>
+          <li>
+            <Link href="/">Home</Link>
+          </li>
+          <li>
+            <Link href="#about">About</Link>
+          </li>
+          {/* <li>
+            <Link href="#projects">Projects</Link>
+          </li> */}
+          <li>
+            <Link href="/posts">Posts</Link>
+          </li>
+          <li>
+            <Link href="#contact">Contact Me</Link>
+          </li>
+        </ul>
+        <div className={styles.home__mobile__social}>
+          <Link href="https://github.com/psilentrain1" target="_blank">
+            <FaGithub />
+          </Link>
+          <Link href="https://www.linkedin.com/in/james-drake-782a16316/" target="_blank">
+            <FaLinkedin />
+          </Link>
+          <Link href="https://bsky.app/profile/jamesdraketech.bsky.social" target="_blank">
+            <SiBluesky />
+          </Link>
+          <Link href="https://www.reddit.com/user/JamesDrake-Tech/" target="_blank">
+            <FaReddit />
+          </Link>
+        </div>
+      </div>
+    </>
+  );
+}
+
+function MobileImage() {
+  return (
+    <section className={styles.home__mobile__image}>
+      <Image src="/james.jpg" alt="James Drake" width={200} height={267} />
+    </section>
   );
 }
