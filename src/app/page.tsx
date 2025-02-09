@@ -8,6 +8,7 @@ import { useDeviceType } from "@/hooks/useDeviceType";
 import { FcMenu } from "react-icons/fc";
 import { SlClose } from "react-icons/sl";
 import { useEffect, useRef } from "react";
+import Script from "next/script";
 
 /* export const metadata = {
   title: "James Drake - Developer",
@@ -19,6 +20,7 @@ export default function Home() {
 
   return (
     <>
+      <Script src="https://analytics.jamesdraketech.com/script.js" data-website-id="e4d5d030-276c-4a8a-81b1-f5e12d5c32b6" />
       <div className={styles.home__main}>
         <div className={styles.home__page}>
           {isDesktop && <Sidebar />}

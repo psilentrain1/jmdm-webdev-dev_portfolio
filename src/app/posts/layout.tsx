@@ -11,12 +11,14 @@ import { useDeviceType } from "@/hooks/useDeviceType";
 import { SlClose } from "react-icons/sl";
 import { FcMenu } from "react-icons/fc";
 import { useEffect, useRef } from "react";
+import Script from "next/script";
 
 export default function PostsLayout({ children }: { children: React.ReactNode }) {
   const { isMobile, isDesktop } = useDeviceType();
 
   return (
     <>
+      <Script src="https://analytics.jamesdraketech.com/script.js" data-website-id="e4d5d030-276c-4a8a-81b1-f5e12d5c32b6" />
       <div className={styles.posts}>
         <div className={styles.posts__left}>
           {isDesktop && <DesktopHeader />}
