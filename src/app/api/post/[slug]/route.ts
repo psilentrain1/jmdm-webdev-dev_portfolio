@@ -17,7 +17,6 @@ export async function GET(req: Request, { params }: { params: Promise<{ slug: st
     log.trace("Fetched post");
     return Response.json(body, { status });
   } catch (error) {
-    console.error(error);
     log.error(error, "Error fetching post");
     return Response.json({ error: error }, { status: 400 });
   }

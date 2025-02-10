@@ -49,7 +49,6 @@ export default function useGetCategories(categoryStyle: string) {
         });
       log.trace("Fetched categories");
     } catch (error) {
-      console.error("Error", error);
       log.error(error, "Error fetching categories");
     } finally {
       setCategoryLoading(false);
