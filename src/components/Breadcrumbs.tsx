@@ -27,10 +27,10 @@ export default function Breadcrumbs({
   return (
     <div>
       <ul className={containerClasses}>
-        <li className={listClasses}>
+        {/* <li className={listClasses}>
           <Link href={"/"}>{homeElement}</Link>
         </li>
-        {pathNames.length > 0 && separator}
+        {pathNames.length > 0 && separator} */}
         {pathNames.map((link, index) => {
           const href = `/${pathNames.slice(0, index + 1).join("/")}`;
           const itemClasses = paths === href ? `${listClasses} ${activeClasses}` : listClasses;
