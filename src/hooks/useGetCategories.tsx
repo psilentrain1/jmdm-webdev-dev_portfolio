@@ -1,5 +1,8 @@
 import Link from "next/link";
 import { JSX, useEffect, useState } from "react";
+import { logger } from "@/app/utilities/logger";
+
+const log = logger.child({ module: "useGetCategories" });
 
 export default function useGetCategories(categoryStyle: string) {
   const [categories, setCategories] = useState<JSX.Element[]>([]);
@@ -8,6 +11,7 @@ export default function useGetCategories(categoryStyle: string) {
   async function getCategories() {
     const categoryList: JSX.Element[] = [];
     try {
+      log.trace("Fetching categories");
       await fetch("/api/categories")
         .then((res) => res.json())
         .then((data) => {
@@ -43,8 +47,9 @@ export default function useGetCategories(categoryStyle: string) {
           }
           setCategories(categoryList);
         });
+      log.trace("Fetched categories");
     } catch (error) {
-      console.error("Error", error);
+      log.error(error, "Error fetching categories");
     } finally {
       setCategoryLoading(false);
     }

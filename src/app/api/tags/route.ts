@@ -1,4 +1,7 @@
 import { dbQuery } from "../database";
+import { logger } from "@/app/utilities/logger";
+
+const log = logger.child({ module: "tags" });
 
 // Get all tags
 export function GET() {
@@ -6,6 +9,7 @@ export function GET() {
 
   let status, body;
   try {
+    log.trace("Fetching all tags");
     const data = dbQuery(tags);
     body = data as { post_tags: string }[];
     status = 200;
@@ -22,9 +26,10 @@ export function GET() {
 
     const tagObj = Object.fromEntries(tagCountMap);
 
+    log.trace("Fetched all tags");
     return Response.json(tagObj, { status });
   } catch (error) {
-    console.error(error);
+    log.error(error, "Error fetching all tags");
     return Response.json({ error: error }, { status: 400 });
   }
 }

@@ -1,6 +1,9 @@
 import { JSX, useEffect, useState } from "react";
 import styles from "../app/posts/page.module.css";
 import Link from "next/link";
+import { logger } from "@/app/utilities/logger";
+
+const log = logger.child({ module: "useGetPosts" });
 
 interface postSet {
   group: string;
@@ -35,6 +38,7 @@ export default function useGetPostList(postSet: postSet) {
   async function getPosts() {
     const postList: JSX.Element[] = [];
     try {
+      log.trace("Fetching posts");
       await fetch(apiCall)
         .then((res) => res.json())
         .then((data) => {
@@ -52,8 +56,9 @@ export default function useGetPostList(postSet: postSet) {
           }
           setPosts(postList);
         });
+      log.trace("Fetched posts");
     } catch (error) {
-      console.error("Error", error);
+      log.error(error, "Error fetching posts");
     } finally {
       setPostLoading(false);
     }
@@ -86,6 +91,7 @@ export function useGetPost(postSet: postSet) {
 
   async function getPost() {
     try {
+      log.trace("Fetching post");
       await fetch(apiCall)
         .then((res) => res.json())
         .then((data) => {
@@ -101,8 +107,9 @@ export function useGetPost(postSet: postSet) {
             post_tags: tags,
           });
         });
+      log.trace("Fetched post");
     } catch (error) {
-      console.error("Error", error);
+      log.error(error, "Error fetching post");
     } finally {
       setPostLoading(false);
     }
