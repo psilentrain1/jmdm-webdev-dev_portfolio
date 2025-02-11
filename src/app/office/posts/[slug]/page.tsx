@@ -3,6 +3,7 @@ import { useGetPost } from "@/hooks/useGetPosts";
 import { Post } from "@/types/app.types";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import styles from "@/app/office/page.module.css";
 
 export default function EditPost() {
   const [postState, setPostState] = useState<Post>({
@@ -31,7 +32,7 @@ export default function EditPost() {
 
   return (
     <>
-      <form>
+      <form className={styles.post__form}>
         <label htmlFor="post_title">Title:</label>
         <input
           id="post_title"

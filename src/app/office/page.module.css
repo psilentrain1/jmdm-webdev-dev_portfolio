@@ -203,3 +203,56 @@ body {
 
 .post__listitem__delete {
 }
+
+.post__form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+}
+
+.post__form label {
+  font-size: 0.8rem;
+  color: #989898;
+}
+
+.post__form input,
+.post__form select {
+  height: 30px;
+  margin-bottom: 20px;
+}
+
+.post__form textarea {
+  min-height: 500px;
+  margin-bottom: 20px;
+}
+
+.post__form input:focus-visible,
+.post__form select:focus-visible,
+.post__form textarea:focus-visible,
+.post__form button:focus-visible {
+  outline: 2px solid var(--clr-office-600);
+}
+
+.post__form option[selected] {
+  background-color: var(--clr-office-300);
+}
+
+.post__form button {
+  height: 50px;
+  width: 100px;
+  background-color: var(--clr-office-600);
+  color: var(--clr-office-50);
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.post__form button:hover {
+  background-color: var(--clr-office-500);
+}
+
+.post__form button:active {
+  background-color: var(--clr-office-800);
+}

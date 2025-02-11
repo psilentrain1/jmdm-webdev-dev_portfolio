@@ -79,7 +79,7 @@ export function useGetPostsOffice({ published = "all", sort = "post_date", direc
         .then((data) => {
           for (let i = 0; i < data.length; i++) {
             postList.push(
-              <tr>
+              <tr key={i}>
                 <th>
                   <Link href={`/office/posts/${data[i].post_slug}`}>{data[i].post_title}</Link>
                 </th>
