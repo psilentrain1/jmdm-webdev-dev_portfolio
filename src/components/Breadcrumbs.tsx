@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 import React from "react";
 
 type BreadcrumbProps = {
-  homeElement: ReactNode;
+  //   homeElement: ReactNode;
   separator: ReactNode;
   containerClasses?: string;
   listClasses?: string;
@@ -14,7 +14,7 @@ type BreadcrumbProps = {
 };
 
 export default function Breadcrumbs({
-  homeElement,
+  //   homeElement,
   separator = <span> | </span>,
   containerClasses,
   listClasses,
