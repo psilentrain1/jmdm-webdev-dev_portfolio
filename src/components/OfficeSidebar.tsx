@@ -13,6 +13,12 @@ export default function OfficeSidebar() {
         <nav className={styles.office__sidebar__nav}>
           <ul>
             <li>
+              <Link href="/">Portfolio Home</Link>
+            </li>
+            <li>
+              <Link href="/office">Office Home</Link>
+            </li>
+            <li>
               <Link href="/office/posts">Posts</Link>
             </li>
             <li>
