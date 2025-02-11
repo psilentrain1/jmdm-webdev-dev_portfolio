@@ -1,7 +1,9 @@
 import { JSX, useEffect, useState } from "react";
 import styles from "../app/posts/page.module.css";
+import officeStyles from "../app/office/page.module.css";
 import Link from "next/link";
 import { logger } from "@/app/utilities/logger";
+import { FaTrash } from "react-icons/fa";
 
 const log = logger.child({ module: "useGetPosts" });
 
@@ -26,7 +28,7 @@ export default function useGetPostList(postSet: postSet) {
 
   let apiCall: string;
   if (postSet.group === "all") {
-    apiCall = "/api/posts";
+    apiCall = `/api/posts/published/post_date/DESC`;
   } else if (postSet.group === "category") {
     apiCall = `/api/category/${postSet.option}`;
   } else if (postSet.group === "tag") {
@@ -121,4 +123,50 @@ export function useGetPost(postSet: postSet) {
   }, []);
 
   return { post, postLoading };
+}
+
+export function useGetPostsOffice({ published = "all", sort = "post_date", direction = "DESC" }) {
+  const [posts, setPosts] = useState<JSX.Element[]>([]);
+  const [postLoading, setPostLoading] = useState(true);
+
+  const apiCall = `/api/posts/${published}/${sort}/${direction}`;
+
+  async function getPosts() {
+    const postList: JSX.Element[] = [];
+    try {
+      log.trace("Fetching posts");
+      await fetch(apiCall)
+        .then((res) => res.json())
+        .then((data) => {
+          for (let i = 0; i < data.length; i++) {
+            postList.push(
+              <article key={i} className={officeStyles.post__listitem}>
+                <div className={officeStyles.post__listitem__title}>
+                  <Link href={`/office/posts/${data[i].post_slug}`}>{data[i].post_title}</Link>
+                </div>
+                <div className={officeStyles.post__listitem__date}>{data[i].post_date}</div>
+                <div className={officeStyles.post__listitem__category}>{data[i].post_category}</div>
+                <div className={officeStyles.post__listitem__status}>{data[i].post_status}</div>
+                <div className={officeStyles.post__listitem__delete}>
+                  <FaTrash />
+                </div>
+              </article>
+            );
+          }
+          setPosts(postList);
+        });
+      log.trace("Fetched posts");
+    } catch (error) {
+      log.error(error, "Error fetching posts");
+    } finally {
+      setPostLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    getPosts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return { posts, postLoading };
 }
