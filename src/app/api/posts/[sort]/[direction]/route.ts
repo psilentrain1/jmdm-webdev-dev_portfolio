@@ -1,11 +1,13 @@
-import { dbQuery, dbRun } from "../database";
+import { dbQuery, dbRun } from "../../../database";
 import { logger } from "@/app/utilities/logger";
 
 const log = logger.child({ module: "posts" });
 
 // Get all posts
-export function GET() {
-  const posts = `SELECT * FROM posts WHERE post_status = 'published' ORDER BY post_date DESC`;
+export async function GET(req: Request, { params }: { params: Promise<{ sort: string; direction: string }> }) {
+  const { sort, direction } = await params;
+
+  const posts = `SELECT * FROM posts WHERE post_status = 'published' ORDER BY ${sort} ${direction}`;
 
   let status, body;
   try {
