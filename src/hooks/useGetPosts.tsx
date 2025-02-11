@@ -1,6 +1,5 @@
 import { JSX, useEffect, useState } from "react";
 import styles from "../app/posts/page.module.css";
-import officeStyles from "../app/office/page.module.css";
 import Link from "next/link";
 import { logger } from "@/app/utilities/logger";
 import { FaTrash } from "react-icons/fa";
@@ -140,17 +139,19 @@ export function useGetPostsOffice({ published = "all", sort = "post_date", direc
         .then((data) => {
           for (let i = 0; i < data.length; i++) {
             postList.push(
-              <article key={i} className={officeStyles.post__listitem}>
-                <div className={officeStyles.post__listitem__title}>
+              <tr>
+                <th>
                   <Link href={`/office/posts/${data[i].post_slug}`}>{data[i].post_title}</Link>
-                </div>
-                <div className={officeStyles.post__listitem__date}>{data[i].post_date}</div>
-                <div className={officeStyles.post__listitem__category}>{data[i].post_category}</div>
-                <div className={officeStyles.post__listitem__status}>{data[i].post_status}</div>
-                <div className={officeStyles.post__listitem__delete}>
-                  <FaTrash />
-                </div>
-              </article>
+                </th>
+                <td>{data[i].post_date}</td>
+                <td>{data[i].post_category}</td>
+                <td>{data[i].post_status}</td>
+                <td>
+                  <Link href="">
+                    <FaTrash />
+                  </Link>
+                </td>
+              </tr>
             );
           }
           setPosts(postList);

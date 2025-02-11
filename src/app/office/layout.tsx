@@ -9,15 +9,13 @@ export default function OfficeLayout({ children }: { children: React.ReactNode }
         <OfficeSidebar />
         <div className={styles.office__right}>
           <Breadcrumbs
-            homeElement="Office"
             separator=" > "
             containerClasses={styles.office__breadcrumbs}
             listClasses={styles.office__breadcrumbs__item}
             activeClasses={styles.office__breadcrumbs__item_active}
             capitalizeLinks={true}
           />
-          <div className={styles.office__content}></div>
-          {children}
+          <div className={styles.office__content}>{children}</div>
         </div>
       </div>
     </>

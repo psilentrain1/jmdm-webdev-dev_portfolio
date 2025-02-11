@@ -135,5 +135,71 @@ body {
 }
 
 .office__content {
-  border: 1px solid pink;
+}
+
+.post__filtersort {
+  padding: 10px 0;
+  border-bottom: 2px solid var(--clr-office-600);
+}
+
+.post__filtersort label {
+  padding: 0 5px 0 10px;
+}
+
+.post__filtersort select {
+}
+
+.post__table {
+  width: 100%;
+}
+
+.post__table a,
+.post__table a:visited {
+  color: black;
+  transition: color 0.3s ease;
+}
+
+.post__table a:hover {
+  color: var(--clr-office-600);
+}
+
+.post__table th {
+  text-align: left;
+}
+
+.post__table th,
+.post__table td {
+  padding: 5px 0;
+}
+
+.post__table tbody > tr {
+  transition: background-color 0.3s ease;
+}
+
+.post__table tbody > tr:nth-child(odd) {
+  background-color: var(--clr-office-100);
+}
+
+.post__table tbody > tr:hover {
+  background-color: var(--clr-office-200);
+}
+
+.post__listitem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px 20px;
+  border-bottom: 1px solid #bcbcbc;
+}
+
+.post__listitem__title {
+}
+
+.post__listitem__date {
+}
+
+.post__listitem__category {
+}
+
+.post__listitem__delete {
 }
