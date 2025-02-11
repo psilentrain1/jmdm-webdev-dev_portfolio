@@ -1,5 +1,5 @@
 // import styles from "@/app/office/page.module.css";
 
 export default function LogViewer() {
-  return <></>;
+  return <>Coming Soon!</>;
 }

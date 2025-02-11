@@ -158,9 +158,13 @@ export function useGetPost(postSet: postSet) {
   }
 
   useEffect(() => {
-    getPost();
+    if (postSet.option != "new") {
+      getPost();
+    } else {
+      setPostLoading(false);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [postSet.option]);
 
   return { post, postLoading };
 }

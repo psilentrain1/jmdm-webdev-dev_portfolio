@@ -21,10 +21,10 @@ export default function EditPost() {
   const { post, postLoading } = useGetPost({ group: "single", option: params.slug });
 
   useEffect(() => {
-    if (!postLoading && post) {
+    if (params.slug != "new" && !postLoading && post) {
       setPostState(post);
     }
-  }, [postLoading, post]);
+  }, [postLoading, post, params.slug]);
 
   if (postLoading) {
     return <span>Loading...</span>;
