@@ -4,6 +4,7 @@ import { Post } from "@/types/app.types";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import styles from "@/app/office/page.module.css";
+import { useSavePost } from "@/hooks/useSavePost";
 
 export default function EditPost() {
   const [postState, setPostState] = useState<Post>({
@@ -19,6 +20,7 @@ export default function EditPost() {
   });
   const params = useParams<{ slug: string }>();
   const { post, postLoading } = useGetPost({ group: "single", option: params.slug });
+  const savePost = useSavePost(params.slug, postState);
 
   useEffect(() => {
     if (params.slug != "new" && !postLoading && post) {
@@ -93,7 +95,16 @@ export default function EditPost() {
           onChange={(e) => setPostState({ ...postState, post_excerpt: e.target.value })}
         />
         <br />
-        <button type="submit">Submit</button>
+        <button
+          type="button"
+          onClick={() => {
+            const confirmPost = window.confirm("Save to database?");
+            if (confirmPost) {
+              savePost();
+            }
+          }}>
+          Submit
+        </button>
       </form>
     </>
   );

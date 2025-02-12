@@ -19,7 +19,6 @@ export async function GET(req: Request, { params }: { params: Promise<{ options:
   }
 
   const posts = `SELECT * FROM posts ${pubString} ORDER BY ${sort} ${direction}`;
-  console.log(posts);
 
   let status, body;
   try {
@@ -36,22 +35,31 @@ export async function GET(req: Request, { params }: { params: Promise<{ options:
 }
 
 // Create post
-// TODO: add status and excerpt
-export async function POST(req: Request) {
+export async function POST(req: Request, { params }: { params: Promise<{ options: string[] }> }) {
   const body = await req.json();
-  const { title, content, date, category, tags } = body;
-  const slug = title
-    .toLowerCase()
-    .replace(/ /g, "-")
-    .replace(/[^\w-]+/g, "");
+  const opts = await params;
 
-  const query = `INSERT INTO posts (post_slug, post_title, post_content, post_date, post_category, post_tags) VALUES (${slug}, ${title}, ${content}, ${date}, ${category}, ${tags})`;
+  body.post_title = body.post_title.replace(/'/g, "''");
+  body.post_content = body.post_content.replace(/'/g, "''");
+
+  let query;
+  if (opts.options[0] === "new") {
+    query = `INSERT INTO posts (post_slug, post_title, post_content, post_excerpt, post_date, post_category, post_tags, post_status) VALUES ('${body.post_slug}', '${body.post_title}', '${body.post_content}', '${body.post_excerpt}', '${body.post_date}', '${body.post_category}', '${body.post_tags}', '${body.post_status}')`;
+  } else {
+    query = `UPDATE posts SET post_title = '${body.post_title}', post_content = '${body.post_content}', post_excerpt = '${body.post_excerpt}', post_date = '${body.post_date}', post_category = '${body.post_category}', post_tags = '${body.post_tags}', post_status = '${body.post_status}' WHERE post_id = ${body.post_id}`;
+  }
 
   try {
     log.trace("Creating post");
-    dbRun(query);
-    // Do I need to return anything here?
-    log.trace("Created post");
+    const run = dbRun(query);
+
+    if (run.changes > 0) {
+      log.trace("Created post");
+      return Response.json({ message: "Post saved" }, { status: 200 });
+    } else {
+      log.error("Post not saved with query: " + query);
+      return Response.json({ message: "Post not saved" }, { status: 500 });
+    }
   } catch (error) {
     log.error(error, "Error creating post");
     return Response.json({ error: error }, { status: 400 });
