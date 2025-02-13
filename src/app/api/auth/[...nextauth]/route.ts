@@ -1,5 +1,6 @@
 import NextAuth, { User } from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
+import { dbQuery } from "../../database";
 
 export const authOptions = {
   providers: [
@@ -10,8 +11,9 @@ export const authOptions = {
   ],
   callbacks: {
     async signIn({ user }: { user: User }) {
-      // TODO: change this to check DB for authorized users.
-      if (user?.email === "github@jamesmdrakemedia.com") {
+      const data = dbQuery(`SELECT * FROM authorized_users WHERE user_email = '${user.email}'`);
+
+      if (data[0]) {
         return true;
       } else {
         return false;

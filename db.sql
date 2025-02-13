@@ -11,6 +11,11 @@ CREATE TABLE posts (
     post_tags TEXT,
     post_status TEXT NOT NULL);
 
+CREATE TABLE 'authorized_users' (
+    user_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_email TEXT NOT NULL
+);
+
 CREATE TABLE users (
     user_id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_name TEXT NOT NULL,
