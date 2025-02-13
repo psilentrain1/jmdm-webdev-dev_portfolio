@@ -35,6 +35,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ options:
 }
 
 // Create post
+// TODO: make sure user is authorized to write to db
 export async function POST(req: Request, { params }: { params: Promise<{ options: string[] }> }) {
   const body = await req.json();
   const opts = await params;
