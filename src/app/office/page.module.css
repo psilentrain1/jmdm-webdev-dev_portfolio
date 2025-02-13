@@ -284,3 +284,17 @@ body {
 .post__form button:active {
   background-color: var(--clr-office-800);
 }
+
+.post__slug {
+  display: flex;
+  flex-direction: row;
+}
+
+.post__slug input {
+  flex: 1 1 auto;
+}
+
+.post__slug button {
+  height: 30px;
+  border-radius: 0;
+}

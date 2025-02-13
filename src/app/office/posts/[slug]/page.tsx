@@ -22,6 +22,16 @@ export default function EditPost() {
   const { post, postLoading } = useGetPost({ group: "single", option: params.slug });
   const savePost = useSavePost(params.slug, postState);
 
+  function generateSlug() {
+    const slug = postState.post_title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+/, "")
+      .replace(/-+$/, "");
+    setPostState({ ...postState, post_slug: slug });
+    console.log(slug);
+  }
+
   useEffect(() => {
     if (params.slug != "new" && !postLoading && post) {
       setPostState(post);
@@ -84,8 +94,14 @@ export default function EditPost() {
           onChange={(e) => setPostState({ ...postState, post_tags: e.target.value.split(", ") })}
         />
         <br />
-        <label htmlFor="post_slug">Slug:</label>
-        <input id="post_slug" value={postState.post_slug} onChange={(e) => setPostState({ ...postState, post_slug: e.target.value })} />
+        <label htmlFor="post__slug">Slug:</label>
+        <div className={styles.post__slug}>
+          <input id="post_slug" value={postState.post_slug} onChange={(e) => setPostState({ ...postState, post_slug: e.target.value })} />
+          <button type="button" onClick={generateSlug}>
+            Generate
+          </button>
+        </div>
+
         <br />
         <label htmlFor="post_excerpt">Excerpt:</label>
         <input
