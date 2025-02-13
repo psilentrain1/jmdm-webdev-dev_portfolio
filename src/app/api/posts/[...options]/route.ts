@@ -1,5 +1,8 @@
 import { dbQuery, dbRun } from "../../database";
 import { logger } from "@/app/utilities/logger";
+import { getServerSession } from "next-auth";
+import { NextResponse } from "next/server";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 const log = logger.child({ module: "posts" });
 
@@ -35,8 +38,14 @@ export async function GET(req: Request, { params }: { params: Promise<{ options:
 }
 
 // Create post
-// TODO: make sure user is authorized to write to db
 export async function POST(req: Request, { params }: { params: Promise<{ options: string[] }> }) {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    log.info("Unauthorized request to create post");
+    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+  }
+
   const body = await req.json();
   const opts = await params;
 

@@ -6,6 +6,7 @@ import SessionProvider from "@/components/SessionProvider";
 
 export default async function OfficeLayout({ children }: { children: React.ReactNode }) {
   const session = await getServerSession();
+  console.log(session);
 
   return (
     <>

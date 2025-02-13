@@ -1,4 +1,4 @@
-import NextAuth from "next-auth";
+import NextAuth, { User } from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
 
 export const authOptions = {
@@ -8,6 +8,16 @@ export const authOptions = {
       clientSecret: process.env.GITHUB_SECRET ?? "",
     }),
   ],
+  callbacks: {
+    async signIn({ user }: { user: User }) {
+      // TODO: change this to check DB for authorized users.
+      if (user?.email === "github@jamesmdrakemedia.com") {
+        return true;
+      } else {
+        return false;
+      }
+    },
+  },
 };
 
 export const handler = NextAuth(authOptions);
