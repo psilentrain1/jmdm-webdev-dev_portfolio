@@ -20,11 +20,7 @@ export function useSavePost(slug: string, postData: Post) {
     });
 
     // FIXME: This doesn't always work
-    if (await response.ok) {
-      setIsSuccessful(true);
-    }
-
-    if (isSuccessful) {
+    if (response.ok) {
       window.alert("Post saved!");
       window.location.assign("/office/posts");
     } else {
