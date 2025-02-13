@@ -9,14 +9,14 @@ export function GET() {
 
   let status, body;
   try {
-    log.trace("Fetching categories");
+    log.trace("Fetching all categories");
     const data = dbQuery(categories);
     body = data;
     status = 200;
-    log.trace("Fetched categories");
+    log.trace("Fetched all categories");
     return Response.json(body, { status });
   } catch (error) {
-    log.error(error, "Error fetching categories");
+    log.error(error, "Error fetching all categories");
     return Response.json({ error: error }, { status: 400 });
   }
 }

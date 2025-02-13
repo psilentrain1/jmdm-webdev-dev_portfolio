@@ -25,14 +25,14 @@ export async function GET(req: Request, { params }: { params: Promise<{ options:
 
   let status, body;
   try {
-    log.trace("Fetching all posts");
+    log.trace(`Fetching all posts using query: ${posts}`);
     const data = dbQuery(posts);
     body = data;
     status = 200;
-    log.trace("Fetched all posts");
+    log.trace(`Fetched all posts using query: ${posts}`);
     return Response.json(body, { status });
   } catch (error) {
-    log.error(error, "Error fetching all posts");
+    log.error(error, `Error fetching all posts using query: ${posts}`);
     return Response.json({ error: error }, { status: 400 });
   }
 }
@@ -42,7 +42,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ options
   const session = await getServerSession(authOptions);
 
   if (!session) {
-    log.info("Unauthorized request to create post");
+    log.info("401: Unauthorized request to create or edit a post!");
     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
 
@@ -69,11 +69,11 @@ export async function POST(req: Request, { params }: { params: Promise<{ options
       log.trace("Created post");
       return Response.json({ message: "Post saved" }, { status: 200 });
     } else {
-      log.error("Post not saved with query: " + query);
+      log.error(`500: Post not saved with query: ${query}`);
       return Response.json({ message: "Post not saved" }, { status: 500 });
     }
   } catch (error) {
-    log.error(error, "Error creating post");
+    log.error(error, `Error creating post with query: ${query}`);
     return Response.json({ error: error }, { status: 400 });
   }
 }

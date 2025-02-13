@@ -10,14 +10,14 @@ export async function GET(req: Request, { params }: { params: Promise<{ tag: str
 
   let status, body;
   try {
-    log.trace("Fetching posts by tag");
+    log.trace(`Fetching posts by tag: ${tag}`);
     const data = dbQuery(posts);
     body = data;
     status = 200;
-    log.trace("Fetched posts by tag");
+    log.trace(`Fetched posts by tag: ${tag}`);
     return Response.json(body, { status });
   } catch (error) {
-    log.error(error, "Error fetching posts by tag");
+    log.error(error, `Error fetching posts by tag: ${tag}`);
     return Response.json({ error: error }, { status: 400 });
   }
 }

@@ -5,16 +5,16 @@ export const logger: Logger =
     ? pino({
         transport: {
           target: "pino/file",
-          options: { destination: "../../logs/app.log" },
+          options: { destination: "./src/logs/app.log" },
         },
         level: "info",
+        redact: ["user.name", "user.email"],
       })
     : pino({
         transport: {
-          target: "pino-pretty",
-          options: {
-            colorize: true,
-          },
+          target: "pino/file",
+          options: { destination: "./src/logs/app.log" },
         },
-        level: "debug",
+        level: "trace",
+        redact: ["user.name", "user.email"],
       });
