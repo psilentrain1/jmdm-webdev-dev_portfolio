@@ -51,10 +51,12 @@ export async function POST(req: Request, { params }: { params: Promise<{ options
 
   body.post_title = body.post_title.replace(/'/g, "''");
   body.post_content = body.post_content.replace(/'/g, "''");
+  // I still want to refactor tags
+  const tags = body.post_tags.join(", ");
 
   let query;
   if (opts.options[0] === "new") {
-    query = `INSERT INTO posts (post_slug, post_title, post_content, post_excerpt, post_date, post_category, post_tags, post_status) VALUES ('${body.post_slug}', '${body.post_title}', '${body.post_content}', '${body.post_excerpt}', '${body.post_date}', '${body.post_category}', '${body.post_tags}', '${body.post_status}')`;
+    query = `INSERT INTO posts (post_slug, post_title, post_content, post_excerpt, post_date, post_category, post_tags, post_status) VALUES ('${body.post_slug}', '${body.post_title}', '${body.post_content}', '${body.post_excerpt}', '${body.post_date}', '${body.post_category}', '${tags}', '${body.post_status}')`;
   } else {
     query = `UPDATE posts SET post_title = '${body.post_title}', post_content = '${body.post_content}', post_excerpt = '${body.post_excerpt}', post_date = '${body.post_date}', post_category = '${body.post_category}', post_tags = '${body.post_tags}', post_status = '${body.post_status}' WHERE post_id = ${body.post_id}`;
   }

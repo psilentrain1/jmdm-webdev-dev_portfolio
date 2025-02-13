@@ -28,10 +28,6 @@ export default function EditPost() {
     }
   }, [postLoading, post, params.slug]);
 
-  useEffect(() => {
-    console.log(postState.post_date);
-  }, [postState]);
-
   if (postLoading) {
     return <span>Loading...</span>;
   }
@@ -49,7 +45,6 @@ export default function EditPost() {
         />
         <br />
         <label htmlFor="post__date">Post Date:</label>
-        {/* FIXME: Date does weird things onChange */}
         <input
           type="date"
           name="post_date"
@@ -83,11 +78,10 @@ export default function EditPost() {
         />
         <br />
         <label htmlFor="post_tags">Tags:</label>
-        {/* FIXME: Fix this state change */}
         <input
           id="post_tags"
-          value={postState.post_tags}
-          onChange={(e) => setPostState({ ...postState, post_tags: new Array(e.target.value) })}
+          value={postState.post_tags.join(", ")}
+          onChange={(e) => setPostState({ ...postState, post_tags: e.target.value.split(", ") })}
         />
         <br />
         <label htmlFor="post_slug">Slug:</label>
