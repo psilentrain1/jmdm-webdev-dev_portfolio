@@ -1,8 +1,6 @@
 import { Post } from "@/types/app.types";
-import { useState } from "react";
 
 export function useSavePost(slug: string, postData: Post) {
-  const [isSuccessful, setIsSuccessful] = useState(false);
   let url;
   if (slug === "new") {
     url = "/api/posts/new";
@@ -19,7 +17,6 @@ export function useSavePost(slug: string, postData: Post) {
       body: JSON.stringify(postData),
     });
 
-    // FIXME: This doesn't always work
     if (response.ok) {
       window.alert("Post saved!");
       window.location.assign("/office/posts");
