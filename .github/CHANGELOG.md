@@ -3,6 +3,9 @@
 ## v2.0
 
 1. Added responsive styling and mobile components
+1. Added auth-protected office area
+1. Added ability to create and edit posts in office area
+1. Bugfixes and general improvements
 
 ## v1.1
 
