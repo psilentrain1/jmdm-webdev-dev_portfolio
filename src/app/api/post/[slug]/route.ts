@@ -10,14 +10,14 @@ export async function GET(req: Request, { params }: { params: Promise<{ slug: st
 
   let status, body;
   try {
-    log.trace("Fetching post");
+    log.trace(`Fetching post: ${slug}`);
     const data = dbQuery(post);
     body = data;
     status = 200;
-    log.trace("Fetched post");
+    log.trace(`Fetched post ${slug}`);
     return Response.json(body, { status });
   } catch (error) {
-    log.error(error, "Error fetching post");
+    log.error(error, `Error fetching post: ${slug}`);
     return Response.json({ error: error }, { status: 400 });
   }
 }
