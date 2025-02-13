@@ -2,6 +2,8 @@ import { JSX, useEffect, useState } from "react";
 import styles from "../app/posts/page.module.css";
 import Link from "next/link";
 import { logger } from "@/app/utilities/logger";
+import { FaTrash } from "react-icons/fa";
+import { Post } from "@/types/app.types";
 
 const log = logger.child({ module: "useGetPosts" });
 
@@ -10,23 +12,13 @@ interface postSet {
   option: string;
 }
 
-interface Post {
-  post_id: number;
-  post_slug: string;
-  post_title: string;
-  post_content: string;
-  post_date: string;
-  post_category: string;
-  post_tags: string[];
-}
-
 export default function useGetPostList(postSet: postSet) {
   const [posts, setPosts] = useState<JSX.Element[]>([]);
   const [postLoading, setPostLoading] = useState(true);
 
   let apiCall: string;
   if (postSet.group === "all") {
-    apiCall = "/api/posts";
+    apiCall = `/api/posts/published/post_date/DESC`;
   } else if (postSet.group === "category") {
     apiCall = `/api/category/${postSet.option}`;
   } else if (postSet.group === "tag") {
@@ -52,6 +44,54 @@ export default function useGetPostList(postSet: postSet) {
                 <div className={styles.postlist__excerpt}>{data[i].post_excerpt}</div>
                 <div className={styles.postlist__category}>{data[i].post_category}</div>
               </article>
+            );
+          }
+          setPosts(postList);
+        });
+      log.trace("Fetched posts");
+    } catch (error) {
+      log.error(error, "Error fetching posts");
+    } finally {
+      setPostLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    getPosts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return { posts, postLoading };
+}
+
+export function useGetPostsOffice({ published = "all", sort = "post_date", direction = "DESC" }) {
+  const [posts, setPosts] = useState<JSX.Element[]>([]);
+  const [postLoading, setPostLoading] = useState(true);
+
+  const apiCall = `/api/posts/${published}/${sort}/${direction}`;
+
+  async function getPosts() {
+    const postList: JSX.Element[] = [];
+    try {
+      log.trace("Fetching posts");
+      await fetch(apiCall)
+        .then((res) => res.json())
+        .then((data) => {
+          for (let i = 0; i < data.length; i++) {
+            postList.push(
+              <tr key={i}>
+                <th>
+                  <Link href={`/office/posts/${data[i].post_slug}`}>{data[i].post_title}</Link>
+                </th>
+                <td>{data[i].post_date}</td>
+                <td>{data[i].post_category}</td>
+                <td>{data[i].post_status}</td>
+                <td>
+                  <Link href="">
+                    <FaTrash />
+                  </Link>
+                </td>
+              </tr>
             );
           }
           setPosts(postList);
@@ -105,6 +145,8 @@ export function useGetPost(postSet: postSet) {
             post_date: data[0].post_date,
             post_category: data[0].post_category,
             post_tags: tags,
+            post_excerpt: data[0].post_excerpt,
+            post_status: data[0].post_status,
           });
         });
       log.trace("Fetched post");
@@ -116,9 +158,13 @@ export function useGetPost(postSet: postSet) {
   }
 
   useEffect(() => {
-    getPost();
+    if (postSet.option != "new") {
+      getPost();
+    } else {
+      setPostLoading(false);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [postSet.option]);
 
   return { post, postLoading };
 }
