@@ -11,7 +11,7 @@ export default function useGetTags(tagStyle: string) {
   async function getTags() {
     const tagList: JSX.Element[] = [];
     try {
-      log.trace("Fetching tags");
+      log.trace("Fetching all tags");
       await fetch("/api/tags")
         .then((res) => res.json())
         .then((data) => {
@@ -44,9 +44,9 @@ export default function useGetTags(tagStyle: string) {
           }
           setTags(tagList);
         });
-      log.trace("Fetched tags");
+      log.trace("Fetched all tags");
     } catch (error) {
-      log.error(error, "Error fetching tags");
+      log.error(error, "Error fetching all tags");
     } finally {
       setTagsLoading(false);
     }

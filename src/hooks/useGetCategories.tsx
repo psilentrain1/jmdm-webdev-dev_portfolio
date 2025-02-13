@@ -11,7 +11,7 @@ export default function useGetCategories(categoryStyle: string) {
   async function getCategories() {
     const categoryList: JSX.Element[] = [];
     try {
-      log.trace("Fetching categories");
+      log.trace("Fetching all categories");
       await fetch("/api/categories")
         .then((res) => res.json())
         .then((data) => {
@@ -47,9 +47,9 @@ export default function useGetCategories(categoryStyle: string) {
           }
           setCategories(categoryList);
         });
-      log.trace("Fetched categories");
+      log.trace("Fetched all categories");
     } catch (error) {
-      log.error(error, "Error fetching categories");
+      log.error(error, "Error fetching all categories");
     } finally {
       setCategoryLoading(false);
     }

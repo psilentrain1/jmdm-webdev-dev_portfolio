@@ -30,7 +30,7 @@ export default function useGetPostList(postSet: postSet) {
   async function getPosts() {
     const postList: JSX.Element[] = [];
     try {
-      log.trace("Fetching posts");
+      log.trace(`Fetching posts. Group: ${postSet.group}, Option: ${postSet.option}, API Call: ${apiCall}`);
       await fetch(apiCall)
         .then((res) => res.json())
         .then((data) => {
@@ -48,9 +48,9 @@ export default function useGetPostList(postSet: postSet) {
           }
           setPosts(postList);
         });
-      log.trace("Fetched posts");
+      log.trace(`Fetched posts. Group: ${postSet.group}, Option: ${postSet.option}, API Call: ${apiCall}`);
     } catch (error) {
-      log.error(error, "Error fetching posts");
+      log.error(error, `Error fetching posts. Group: ${postSet.group}, Option: ${postSet.option}, API Call: ${apiCall}`);
     } finally {
       setPostLoading(false);
     }
@@ -73,7 +73,7 @@ export function useGetPostsOffice({ published = "all", sort = "post_date", direc
   async function getPosts() {
     const postList: JSX.Element[] = [];
     try {
-      log.trace("Fetching posts");
+      log.trace(`Fetching posts. API Call: ${apiCall}`);
       await fetch(apiCall)
         .then((res) => res.json())
         .then((data) => {
@@ -96,9 +96,9 @@ export function useGetPostsOffice({ published = "all", sort = "post_date", direc
           }
           setPosts(postList);
         });
-      log.trace("Fetched posts");
+      log.trace(`Fetched posts. API Call: ${apiCall}`);
     } catch (error) {
-      log.error(error, "Error fetching posts");
+      log.error(error, `Error fetching posts. API Call: ${apiCall}`);
     } finally {
       setPostLoading(false);
     }
@@ -131,7 +131,7 @@ export function useGetPost(postSet: postSet) {
 
   async function getPost() {
     try {
-      log.trace("Fetching post");
+      log.trace(`Fetching post. Group: ${postSet.group}, Option: ${postSet.option}, API Call: ${apiCall}`);
       await fetch(apiCall)
         .then((res) => res.json())
         .then((data) => {
@@ -149,9 +149,9 @@ export function useGetPost(postSet: postSet) {
             post_status: data[0].post_status,
           });
         });
-      log.trace("Fetched post");
+      log.trace(`Fetched post. Group: ${postSet.group}, Option: ${postSet.option}, API Call: ${apiCall}`);
     } catch (error) {
-      log.error(error, "Error fetching post");
+      log.error(error, `Error fetching post. Group: ${postSet.group}, Option: ${postSet.option}, API Call: ${apiCall}`);
     } finally {
       setPostLoading(false);
     }
