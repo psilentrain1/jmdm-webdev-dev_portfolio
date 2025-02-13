@@ -28,6 +28,10 @@ export default function EditPost() {
     }
   }, [postLoading, post, params.slug]);
 
+  useEffect(() => {
+    console.log(postState.post_date);
+  }, [postState]);
+
   if (postLoading) {
     return <span>Loading...</span>;
   }
@@ -45,12 +49,13 @@ export default function EditPost() {
         />
         <br />
         <label htmlFor="post__date">Post Date:</label>
+        {/* FIXME: Date does weird things onChange */}
         <input
           type="date"
           name="post_date"
           id="post_date"
           value={postState.post_date.slice(0, 4) + "-" + postState.post_date.slice(4, 6) + "-" + postState.post_date.slice(6, 8)}
-          onChange={(e) => setPostState({ ...postState, post_date: e.target.value })}
+          onChange={(e) => setPostState({ ...postState, post_date: e.target.value.replace(/-/g, "") })}
         />
         <br />
         <label htmlFor="post_status">Status:</label>
