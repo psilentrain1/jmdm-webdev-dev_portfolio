@@ -47,7 +47,15 @@ export default function OfficePosts() {
             <th>Delete</th>
           </tr>
         </thead>
-        <tbody>{postLoading ? <span>Loading...</span> : posts}</tbody>
+        <tbody>
+          {postLoading ? (
+            <tr>
+              <td>Loading...</td>
+            </tr>
+          ) : (
+            posts
+          )}
+        </tbody>
       </table>
     </>
   );
