@@ -1,21 +1,3 @@
-:root {
-  /* colors */
-  --clr-office-50: #ecf3ff;
-  --clr-office-100: #dce8ff;
-  --clr-office-200: #bfd2ff;
-  --clr-office-300: #98b4ff;
-  --clr-office-400: #708aff;
-  --clr-office-500: #4f60ff;
-  --clr-office-600: #3439fc;
-  --clr-office-700: #2324df;
-  --clr-office-800: #1f22b4;
-  --clr-office-900: #22278d;
-  --clr-office-950: #141552;
-
-  /* sizes */
-  --width-sidebar: 300px;
-}
-
 body {
   background-color: var(--clr-office-50);
 }
