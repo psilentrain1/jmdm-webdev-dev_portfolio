@@ -2,7 +2,7 @@ import { dbQuery, dbRun } from "../../database";
 import { logger } from "@/app/utilities/logger";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/auth";
 
 const log = logger.child({ module: "posts" });
 
