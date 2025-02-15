@@ -28,6 +28,19 @@
   --btn-dark-active: linear-gradient(var(--clr-primary-500), var(--clr-primary-700));
   --btn-box-shadow: inset 0 2px 0 0 hsla(0, 0%, 100%, 0.2), inset 0 -1px 0 0 rgba(0, 0, 0, 0.25), 0 2px 6px 0 rgba(0, 0, 0, 0.1);
 
+  /* office colors */
+  --clr-office-50: #ecf3ff;
+  --clr-office-100: #dce8ff;
+  --clr-office-200: #bfd2ff;
+  --clr-office-300: #98b4ff;
+  --clr-office-400: #708aff;
+  --clr-office-500: #4f60ff;
+  --clr-office-600: #3439fc;
+  --clr-office-700: #2324df;
+  --clr-office-800: #1f22b4;
+  --clr-office-900: #22278d;
+  --clr-office-950: #141552;
+
   /* fonts */
   --font-heading-1: 6rem Helvetica, sans-serif;
   --font-subhead-1: 3rem Georgia, serif;
@@ -41,6 +54,9 @@
 
   /* sizes */
   --mobile-breakpoint: 1080px;
+
+  /* office sizes */
+  --width-sidebar: 300px;
 }
 
 * {

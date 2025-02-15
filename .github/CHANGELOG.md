@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v2.1
+
+1. Bugfixes
+
 ## v2.0
 
 1. Added responsive styling and mobile components
