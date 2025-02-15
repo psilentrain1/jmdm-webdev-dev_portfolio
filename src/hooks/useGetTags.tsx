@@ -1,5 +1,8 @@
 import Link from "next/link";
 import { JSX, useEffect, useState } from "react";
+import { logger } from "@/app/utilities/logger";
+
+const log = logger.child({ module: "useGetTags" });
 
 export default function useGetTags(tagStyle: string) {
   const [tags, setTags] = useState<JSX.Element[]>([]);
@@ -8,6 +11,7 @@ export default function useGetTags(tagStyle: string) {
   async function getTags() {
     const tagList: JSX.Element[] = [];
     try {
+      log.trace("Fetching all tags");
       await fetch("/api/tags")
         .then((res) => res.json())
         .then((data) => {
@@ -40,8 +44,9 @@ export default function useGetTags(tagStyle: string) {
           }
           setTags(tagList);
         });
+      log.trace("Fetched all tags");
     } catch (error) {
-      console.error("Error", error);
+      log.error(error, "Error fetching all tags");
     } finally {
       setTagsLoading(false);
     }

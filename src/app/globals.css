@@ -38,6 +38,9 @@
   --font-body-text: 16px Georgia, serif;
   --font-article-link: 20px bold Helvetica, sans-serif;
   --font-small-text: 0.9rem Georgia, serif;
+
+  /* sizes */
+  --mobile-breakpoint: 1080px;
 }
 
 * {
@@ -68,4 +71,11 @@ h3 {
 h4 {
   font: var(--font-heading-4);
   font-weight: 600;
+}
+
+/* mobile */
+@media screen and (max-width: 1080px) {
+  body {
+    width: 100vw;
+  }
 }

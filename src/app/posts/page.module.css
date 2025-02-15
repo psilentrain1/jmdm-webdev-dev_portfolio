@@ -305,3 +305,108 @@
 .posts__footer a:hover {
   color: var(--link-hover-light);
 }
+
+/* mobile */
+@media (max-width: 1080px) {
+  .posts {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .posts__hamburger {
+    position: fixed;
+    display: block;
+    right: 0;
+    top: 0;
+    padding: 20px;
+  }
+
+  .posts__hamburger__icon {
+    padding: 10px 10px 6px 10px;
+    border: 2px solid var(--txt-light);
+    background-color: var(--clr-primary-600);
+    border-radius: 5px;
+    font-size: 1.5rem;
+  }
+
+  .posts__hamburger__icon g {
+    fill: var(--txt-light);
+  }
+
+  .posts__mobile__menu {
+    position: fixed;
+    display: block;
+    right: 10px;
+    top: -1000px;
+    width: 250px;
+    height: 100%;
+    border-radius: 5px;
+    background-color: var(--clr-primary-600);
+    box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.5);
+    transition: top 0.3s ease;
+  }
+
+  .posts__mobile__menu__open {
+    top: 10px;
+  }
+
+  .posts__mobile__menu__close {
+    padding: 10px;
+    text-align: right;
+  }
+
+  .posts__mobile__menu,
+  .posts__mobile__menu a,
+  .posts__mobile__menu a:visited {
+    font-family: Georgia, serif;
+    font-size: 2rem;
+    color: var(--txt-light);
+    text-decoration: none;
+    line-height: 2.5rem;
+  }
+
+  .posts__mobile__menu a:active {
+    color: var(--link-hover-light);
+  }
+
+  .posts__mobile__menu ul {
+    list-style-type: none;
+    padding: 20px;
+  }
+
+  .posts__sidebar__content,
+  .posts__sidebar__content a,
+  .posts__sidebar__content a:visited {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .posts__mobile__social {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 20px;
+  }
+
+  .posts__mobile__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    padding: 5px 20px;
+    background-color: var(--clr-primary-600);
+    height: 100px;
+  }
+
+  .posts__brand {
+    color: var(--txt-light);
+  }
+
+  .posts__brand__link {
+    text-decoration: none;
+  }
+
+  .posts__left {
+    width: 100%;
+  }
+}

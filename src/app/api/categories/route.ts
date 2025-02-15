@@ -1,4 +1,7 @@
 import { dbQuery } from "../database";
+import { logger } from "@/app/utilities/logger";
+
+const log = logger.child({ module: "categories" });
 
 // Get all categories
 export function GET() {
@@ -6,13 +9,14 @@ export function GET() {
 
   let status, body;
   try {
+    log.trace("Fetching all categories");
     const data = dbQuery(categories);
     body = data;
     status = 200;
-
+    log.trace("Fetched all categories");
     return Response.json(body, { status });
   } catch (error) {
-    console.error(error);
+    log.error(error, "Error fetching all categories");
     return Response.json({ error: error }, { status: 400 });
   }
 }

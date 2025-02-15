@@ -14,6 +14,10 @@ export function migrate() {
                 post_tags TEXT,
                 post_status TEXT NOT NULL);
 
+            CREATE TABLE IF NOT EXISTS authorized_users (
+                'user_id' INTEGER PRIMARY KEY AUTOINCREMENT,
+                'user_email' TEXT NOT NULL);
+
             CREATE TABLE IF NOT EXISTS users (
                 user_id INTEGER PRIMARY KEY AUTOINCREMENT,
                 user_name TEXT NOT NULL,

@@ -1,20 +1,15 @@
 import { JSX, useEffect, useState } from "react";
 import styles from "../app/posts/page.module.css";
 import Link from "next/link";
+import { logger } from "@/app/utilities/logger";
+import { FaTrash } from "react-icons/fa";
+import { Post } from "@/types/app.types";
+
+const log = logger.child({ module: "useGetPosts" });
 
 interface postSet {
   group: string;
   option: string;
-}
-
-interface Post {
-  post_id: number;
-  post_slug: string;
-  post_title: string;
-  post_content: string;
-  post_date: string;
-  post_category: string;
-  post_tags: string[];
 }
 
 export default function useGetPostList(postSet: postSet) {
@@ -23,7 +18,7 @@ export default function useGetPostList(postSet: postSet) {
 
   let apiCall: string;
   if (postSet.group === "all") {
-    apiCall = "/api/posts";
+    apiCall = `/api/posts/published/post_date/DESC`;
   } else if (postSet.group === "category") {
     apiCall = `/api/category/${postSet.option}`;
   } else if (postSet.group === "tag") {
@@ -35,6 +30,7 @@ export default function useGetPostList(postSet: postSet) {
   async function getPosts() {
     const postList: JSX.Element[] = [];
     try {
+      log.trace(`Fetching posts. Group: ${postSet.group}, Option: ${postSet.option}, API Call: ${apiCall}`);
       await fetch(apiCall)
         .then((res) => res.json())
         .then((data) => {
@@ -52,8 +48,57 @@ export default function useGetPostList(postSet: postSet) {
           }
           setPosts(postList);
         });
+      log.trace(`Fetched posts. Group: ${postSet.group}, Option: ${postSet.option}, API Call: ${apiCall}`);
     } catch (error) {
-      console.error("Error", error);
+      log.error(error, `Error fetching posts. Group: ${postSet.group}, Option: ${postSet.option}, API Call: ${apiCall}`);
+    } finally {
+      setPostLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    getPosts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return { posts, postLoading };
+}
+
+export function useGetPostsOffice({ published = "all", sort = "post_date", direction = "DESC" }) {
+  const [posts, setPosts] = useState<JSX.Element[]>([]);
+  const [postLoading, setPostLoading] = useState(true);
+
+  const apiCall = `/api/posts/${published}/${sort}/${direction}`;
+
+  async function getPosts() {
+    const postList: JSX.Element[] = [];
+    try {
+      log.trace(`Fetching posts. API Call: ${apiCall}`);
+      await fetch(apiCall)
+        .then((res) => res.json())
+        .then((data) => {
+          for (let i = 0; i < data.length; i++) {
+            postList.push(
+              <tr key={i}>
+                <th>
+                  <Link href={`/office/posts/${data[i].post_slug}`}>{data[i].post_title}</Link>
+                </th>
+                <td>{data[i].post_date}</td>
+                <td>{data[i].post_category}</td>
+                <td>{data[i].post_status}</td>
+                <td>
+                  <Link href="">
+                    <FaTrash />
+                  </Link>
+                </td>
+              </tr>
+            );
+          }
+          setPosts(postList);
+        });
+      log.trace(`Fetched posts. API Call: ${apiCall}`);
+    } catch (error) {
+      log.error(error, `Error fetching posts. API Call: ${apiCall}`);
     } finally {
       setPostLoading(false);
     }
@@ -86,6 +131,7 @@ export function useGetPost(postSet: postSet) {
 
   async function getPost() {
     try {
+      log.trace(`Fetching post. Group: ${postSet.group}, Option: ${postSet.option}, API Call: ${apiCall}`);
       await fetch(apiCall)
         .then((res) => res.json())
         .then((data) => {
@@ -99,19 +145,26 @@ export function useGetPost(postSet: postSet) {
             post_date: data[0].post_date,
             post_category: data[0].post_category,
             post_tags: tags,
+            post_excerpt: data[0].post_excerpt,
+            post_status: data[0].post_status,
           });
         });
+      log.trace(`Fetched post. Group: ${postSet.group}, Option: ${postSet.option}, API Call: ${apiCall}`);
     } catch (error) {
-      console.error("Error", error);
+      log.error(error, `Error fetching post. Group: ${postSet.group}, Option: ${postSet.option}, API Call: ${apiCall}`);
     } finally {
       setPostLoading(false);
     }
   }
 
   useEffect(() => {
-    getPost();
+    if (postSet.option != "new") {
+      getPost();
+    } else {
+      setPostLoading(false);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [postSet.option]);
 
   return { post, postLoading };
 }
