@@ -38,7 +38,7 @@ export default function Home() {
                 and web development, I bridge the gap between robust local applications and modern web experiences.
               </p>
               <span className={styles.home__sectionlink}>
-                <Link href="/#">Read more about me</Link>
+                <Link href="/posts/how-did-i-get-here">Read more about me</Link>
               </span>
             </section>
             {/* Temp disabling until there is content to put here */}
