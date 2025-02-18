@@ -51,6 +51,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ options
 
   body.post_title = body.post_title.replace(/'/g, "''");
   body.post_content = body.post_content.replace(/'/g, "''");
+  body.post_excerpt = body.post_excerpt.replace(/'/g, "''");
   // I still want to refactor tags
   const tags = body.post_tags.join(", ");
 
