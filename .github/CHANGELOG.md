@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v2.2
+
+1. Added link to more about me
+
 ## v2.1
 
 1. Bugfixes
