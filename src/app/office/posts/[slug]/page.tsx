@@ -29,7 +29,6 @@ export default function EditPost() {
       .replace(/^-+/, "")
       .replace(/-+$/, "");
     setPostState({ ...postState, post_slug: slug });
-    console.log(slug);
   }
 
   useEffect(() => {
