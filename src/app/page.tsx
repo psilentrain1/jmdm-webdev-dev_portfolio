@@ -3,7 +3,8 @@ import Home from "./Home";
 
 export const metadata: Metadata = {
   title: "Home - James Drake",
-  description: "James Drake's Development Portfolio Website",
+  description:
+    "James Drake is a software developer with experience in both desktop and web development who brings creativity from multiple worlds into his code.",
 };
 
 export default function HomePage() {
