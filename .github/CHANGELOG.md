@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v2.3
+
+1. Bugfixes
+1. Added title tags for pages
+1. Added meta descriptions and keywords
+
 ## v2.2
 
 1. Added link to more about me

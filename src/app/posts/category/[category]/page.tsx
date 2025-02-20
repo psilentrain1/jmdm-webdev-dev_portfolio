@@ -1,17 +1,20 @@
-"use client";
-import useGetPostList from "@/hooks/useGetPosts";
-import { useParams } from "next/navigation";
+import Category from "./Category";
 
-export default function PostsByCategory() {
-  const params = useParams<{ category: string }>();
-  const { posts, postLoading } = useGetPostList({ group: "category", option: params.category });
+export async function generateMetadata({ params }: { params: { category: string } }) {
+  const pageParams = await params;
 
+  return {
+    title: `Category: ${pageParams.category}`,
+    description:
+      "James Drake is a software developer with experience in both desktop and web development who brings creativity from multiple worlds into his code.",
+    keywords: ["developer", "programmer", "software", "James Drake"],
+  };
+}
+
+export default async function PostsByCategory() {
   return (
     <>
-      <h2>
-        Category: <span id="categoryName">{params.category}</span>
-      </h2>
-      {postLoading ? <span>Loading...</span> : posts}
+      <Category />
     </>
   );
 }

@@ -1,14 +1,17 @@
-"use client";
-import useGetTags from "@/hooks/useGetTags";
-import styles from "../page.module.css";
+import { Metadata } from "next";
+import TagList from "./Tags";
+
+export const metadata: Metadata = {
+  title: "Tags",
+  description:
+    "James Drake is a software developer with experience in both desktop and web development who brings creativity from multiple worlds into his code.",
+  keywords: ["developer", "programmer", "software", "James Drake"],
+};
 
 export default function Tags() {
-  const { tags, tagsLoading } = useGetTags("page");
-
   return (
     <>
-      <h2>Tags</h2>
-      <ul className={styles.posts__taglist}>{tagsLoading ? <div>Loading...</div> : tags}</ul>
+      <TagList />
     </>
   );
 }

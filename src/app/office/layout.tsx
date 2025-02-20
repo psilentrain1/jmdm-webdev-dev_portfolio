@@ -4,6 +4,10 @@ import styles from "./page.module.css";
 import { getServerSession } from "next-auth";
 import SessionProvider from "@/components/SessionProvider";
 
+export const metadata = {
+  title: "Office - James Drake",
+};
+
 export default async function OfficeLayout({ children }: { children: React.ReactNode }) {
   const session = await getServerSession();
 
