@@ -10,7 +10,7 @@ export default function Sidebar() {
       <div className={styles.home__sidebar}>
         <div className={styles.home__sidebar_content}>
           <div className={styles.home__image}>
-            <Image src="/james.jpg" alt="James Drake" width={200} height={267} />
+            <Image src="/james.jpg" alt="A photo of James Drake" width={200} height={267} />
           </div>
           <nav className={styles.home__nav}>
             <ul>

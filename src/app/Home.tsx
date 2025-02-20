@@ -87,7 +87,7 @@ export default function Home() {
 function MobileImage() {
   return (
     <section className={styles.home__mobile__image}>
-      <Image src="/james.jpg" alt="James Drake" width={200} height={267} />
+      <Image src="/james.jpg" alt="A photo of James Drake" width={200} height={267} />
     </section>
   );
 }
