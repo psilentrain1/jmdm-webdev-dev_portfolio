@@ -1,6 +1,6 @@
 import Tag from "./Tag";
 
-export async function generateMetadata({ params }: { params: { tag: string } }) {
+export async function generateMetadata({ params }: { params: Promise<{ tag: string }> }) {
   const pageParams = await params;
 
   return {
