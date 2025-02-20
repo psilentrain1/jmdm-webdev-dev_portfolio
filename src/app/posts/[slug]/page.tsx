@@ -1,7 +1,7 @@
 import getPostMeta from "@/app/utilities/getPostMeta";
 import Post from "./Post";
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const pageParams = await params;
   const [postTitle, postExcerpt, postTags] = await getPostMeta(pageParams.slug);
 
