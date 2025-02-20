@@ -6,7 +6,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const [postTitle, postExcerpt] = await getPostMeta(pageParams.slug);
 
   return {
-    title: `${postTitle} - James Drake`,
+    title: `${postTitle}`,
     description: postExcerpt,
   };
 }
