@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v2.4
+
+1. Fixed Type errors
+
 ## v2.3
 
 1. Bugfixes
