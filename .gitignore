@@ -51,3 +51,5 @@ mystuff/
 blog-posts/
 
 logs/
+
+public/*.html
