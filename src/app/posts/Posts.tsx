@@ -26,7 +26,8 @@ export function PostsPageSidebar() {
 export function PostsPageFooter() {
   return (
     <footer className={styles.posts__footer}>
-      &copy; 2025 James Drake. All rights reserved.{" "}
+      &copy; 2025 James Drake. All rights reserved. <Link href="/privacy">Privacy Policy</Link>
+      {" | "}
       <Link href="https://github.com/psilentrain1/jmdm-webdev-dev_portfolio/issues/new" target="_blank">
         Report Issues.
       </Link>

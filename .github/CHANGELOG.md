@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v2.5
+
+1. Added Privacy Policy
+
 ## v2.4
 
 1. Fixed Type errors

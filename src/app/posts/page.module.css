@@ -410,3 +410,69 @@
     width: 100%;
   }
 }
+
+.privacy {
+  font-family: "Helvetica", sans-serif;
+}
+
+.privacy h3 {
+  font-family: "Helvetica", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-top: 40px;
+  margin-bottom: var(--privacy-margin-bottom);
+}
+
+.privacy a,
+.privacy a:visited {
+  color: var(--txt-dark);
+  transition: color 0.3s ease;
+}
+
+.privacy a:hover {
+  color: var(--link-hover-dark);
+}
+
+.privacy p {
+  margin-bottom: var(--privacy-margin-bottom);
+}
+
+.privacy ul,
+.privacy ol {
+  margin-left: 40px;
+  margin-bottom: var(--privacy-margin-bottom);
+}
+
+.privacy ol {
+  line-height: 1.5rem;
+}
+
+.locatedin {
+  font-weight: 600;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+.ulbold {
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.ul {
+  text-decoration: underline;
+}
+
+.privacy table {
+  margin-bottom: var(--privacy-margin-bottom);
+}
+
+.privacy thead {
+  background-color: var(--clr-primary-600);
+  color: var(--txt-light);
+}
+
+.privacy th,
+.privacy td {
+  padding: 5px 10px;
+  border: 1px solid var(--clr-primary-600);
+}
