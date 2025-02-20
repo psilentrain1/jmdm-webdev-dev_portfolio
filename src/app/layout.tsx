@@ -1,8 +1,11 @@
+import { Metadata } from "next";
 import "./globals.css";
 
-export const metadata = {
-  title: "James Drake - Developer",
-  description: "James Drake's Development Portfolio Website",
+export const metadata: Metadata = {
+  title: {
+    template: "%s - James Drake",
+    default: "James Drake - Developer",
+  },
 };
 
 export default function HomeLayout({ children }: { children: React.ReactNode }) {

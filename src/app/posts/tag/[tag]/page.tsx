@@ -1,17 +1,20 @@
-"use client";
-import { useParams } from "next/navigation";
-import useGetPostList from "@/hooks/useGetPosts";
+import Tag from "./Tag";
+
+export async function generateMetadata({ params }: { params: { tag: string } }) {
+  const pageParams = await params;
+
+  return {
+    title: `Tag: ${pageParams.tag}`,
+    description:
+      "James Drake is a software developer with experience in both desktop and web development who brings creativity from multiple worlds into his code.",
+    keywords: ["developer", "programmer", "software", "James Drake"],
+  };
+}
 
 export default function PostsByTag() {
-  const params = useParams<{ tag: string }>();
-  const { posts, postLoading } = useGetPostList({ group: "tag", option: params.tag });
-
   return (
     <>
-      <h2>
-        Tag: <span id="tagName">{decodeURI(params.tag)}</span>
-      </h2>
-      {postLoading ? <span>Loading...</span> : posts}
+      <Tag />
     </>
   );
 }

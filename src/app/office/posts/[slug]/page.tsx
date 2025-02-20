@@ -22,6 +22,9 @@ export default function EditPost() {
   const { post, postLoading } = useGetPost({ group: "single", option: params.slug });
   const savePost = useSavePost(params.slug, postState);
 
+  const characterCount = document.getElementById("CharacterCount");
+  const postExcerpt = document.getElementById("post_excerpt") as HTMLInputElement;
+
   function generateSlug() {
     const slug = postState.post_title
       .toLowerCase()
@@ -29,7 +32,6 @@ export default function EditPost() {
       .replace(/^-+/, "")
       .replace(/-+$/, "");
     setPostState({ ...postState, post_slug: slug });
-    console.log(slug);
   }
 
   useEffect(() => {
@@ -37,6 +39,13 @@ export default function EditPost() {
       setPostState(post);
     }
   }, [postLoading, post, params.slug]);
+
+  useEffect(() => {
+    if (characterCount && postExcerpt) {
+      characterCount.innerHTML = postExcerpt.value.length.toString();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [postState]);
 
   if (postLoading) {
     return <span>Loading...</span>;
@@ -103,7 +112,9 @@ export default function EditPost() {
         </div>
 
         <br />
-        <label htmlFor="post_excerpt">Excerpt:</label>
+        <label htmlFor="post_excerpt">
+          Excerpt: | Characters: <span id="CharacterCount"></span>/150
+        </label>
         <input
           id="post_excerpt"
           value={postState.post_excerpt}

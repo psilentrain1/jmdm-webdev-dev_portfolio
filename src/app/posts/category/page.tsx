@@ -1,14 +1,17 @@
-"use client";
-import useGetCategories from "@/hooks/useGetCategories";
-import styles from "../page.module.css";
+import { Metadata } from "next";
+import Categories from "./Categories";
+
+export const metadata: Metadata = {
+  title: "Categories",
+  description:
+    "James Drake is a software developer with experience in both desktop and web development who brings creativity from multiple worlds into his code.",
+  keywords: ["developer", "programmer", "software", "James Drake"],
+};
 
 export default function Category() {
-  const { categories, categoryLoading } = useGetCategories("page");
-
   return (
     <>
-      <h2>Categories</h2>
-      <ul className={styles.posts__taglist}>{categoryLoading ? <li>Loading...</li> : categories}</ul>
+      <Categories />
     </>
   );
 }
