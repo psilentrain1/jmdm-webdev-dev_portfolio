@@ -46,8 +46,12 @@ next-env.d.ts
 *.db
 folio.sql
 
-mystuff/
-
-blog-posts/
-
+# Logs
 logs/
+
+# Google Search Console Verification
+public/*.html
+
+# My stuff
+mystuff/
+blog-posts/

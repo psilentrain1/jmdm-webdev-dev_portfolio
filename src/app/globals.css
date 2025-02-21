@@ -57,6 +57,9 @@
 
   /* office sizes */
   --width-sidebar: 300px;
+
+  /* privacy sizes */
+  --privacy-margin-bottom: 20px;
 }
 
 * {
