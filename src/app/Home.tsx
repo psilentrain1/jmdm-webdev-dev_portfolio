@@ -6,6 +6,7 @@ import styles from "./page.module.css";
 import Sidebar from "@/components/HomeSidebar";
 import Hamburger from "@/components/HomeHamburger";
 import { useDeviceType } from "@/hooks/useDeviceType";
+import { SiCss3, SiElectron, SiHtml5, SiReact, SiSqlite, SiTailwindcss, SiTypescript } from "react-icons/si";
 
 export default function Home() {
   const { isMobile, isDesktop } = useDeviceType();
@@ -34,29 +35,56 @@ export default function Home() {
               </span>
             </section>
             {/* Temp disabling until there is content to put here */}
-            {/* <section className={styles.home__projects}>
-                <h3 id="projects">A selection of projects</h3>
-                <div className={styles.home__project_container}>
-                  <div className={styles.home__project_header}>
-                    <span className={styles.home__project_title}>Application Tracker</span>
-                    <span className={styles.home__project_stack}>
-                      <SiReact />
-                      <SiTypescript />
-                      <SiExpress />
-                      <SiSqlite />
-                    </span>
-                  </div>
-                  <div className={styles.home__project_description}>
-                    <p>A React App that helps the user track job applications and provides useful analytics.</p>
-                  </div>
-                  <div className={styles.home__project_links}>
-                    <Link href="/#">Live Demo</Link> | <Link href="/#">GitHub</Link>
-                  </div>
+            <section className={styles.home__projects}>
+              <h3 id="projects">A selection of projects</h3>
+              <div className={styles.home__project_container}>
+                <div className={styles.home__project_header}>
+                  <span className={styles.home__project_title}>Tickr</span>
+                  <span className={styles.home__project_stack}>
+                    <SiElectron />
+                    <SiReact />
+                    <SiTypescript />
+                    <SiSqlite />
+                    <SiTailwindcss />
+                  </span>
                 </div>
-                <span className={styles.home__sectionlink}>
-                  <Link href="/#">View more projects</Link>
-                </span>
-              </section> */}
+                <div className={styles.home__project_description}>
+                  <p>Tickr is a simple, lightweight app to track the performance of stocks.</p>
+                </div>
+                <div className={styles.home__project_links}>
+                  {/* <Link href="/#" target="blank">Live Demo</Link> |  */}
+                  <Link href="https://github.com/psilentrain1/jmdm-apps-tickr" target="blank">
+                    GitHub
+                  </Link>
+                </div>
+              </div>
+              <div className={styles.home__project_container}>
+                <div className={styles.home__project_header}>
+                  <span className={styles.home__project_title}>ROOTS.</span>
+                  <span className={styles.home__project_stack}>
+                    <SiHtml5 />
+                    <SiCss3 />
+                    <SiTypescript />
+                    <SiTailwindcss />
+                  </span>
+                </div>
+                <div className={styles.home__project_description}>
+                  <p>A simple single-page website for a fictional community bakery named Roots.</p>
+                </div>
+                <div className={styles.home__project_links}>
+                  <Link href="https://preview.jamesdraketech.com/roots" target="blank">
+                    Live Demo
+                  </Link>{" "}
+                  |{" "}
+                  <Link href="https://github.com/psilentrain1/jmdm-apps-tickr" target="blank">
+                    GitHub
+                  </Link>
+                </div>
+              </div>
+              <span className={styles.home__sectionlink}>
+                <Link href="/posts">View more projects</Link>
+              </span>
+            </section>
             <section className={styles.home__contacts}>
               <h3 id="contact">Contact me!</h3>
               <p>
