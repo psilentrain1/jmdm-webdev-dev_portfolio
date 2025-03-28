@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v3.0
+
+1. Added front page projects
+1. Security updates
+
 ## v2.5
 
 1. Added Privacy Policy
