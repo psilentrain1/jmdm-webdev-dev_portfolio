@@ -1,4 +1,5 @@
 "use client";
+// import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Script from "next/script";
@@ -11,6 +12,10 @@ import { SiCss3, SiElectron, SiHtml5, SiReact, SiSqlite, SiTailwindcss, SiTypesc
 export default function Home() {
   const { isMobile, isDesktop } = useDeviceType();
 
+  /* useEffect(() => {
+    console.log("isMobile: ", isMobile);
+    console.log("isDesktop: ", isDesktop);
+  }, [isMobile, isDesktop]); */
   return (
     <>
       <Script src="https://analytics.jamesdraketech.com/script.js" data-website-id="e4d5d030-276c-4a8a-81b1-f5e12d5c32b6" />
