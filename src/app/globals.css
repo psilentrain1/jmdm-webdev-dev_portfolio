@@ -93,7 +93,7 @@ h4 {
 }
 
 /* mobile */
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 850px) {
   body {
     width: 100vw;
   }
