@@ -193,7 +193,7 @@
 }
 
 /* mobile */
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 850px) {
   .home__main {
     background: none;
     padding: 0;

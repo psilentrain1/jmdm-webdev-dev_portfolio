@@ -10,7 +10,7 @@ export function useDeviceType() {
   useEffect(() => {
     const handleResize = () => {
       const resolution = window.innerWidth;
-      const isMobile = resolution < 1080;
+      const isMobile = resolution < 850;
       const isDesktop = !isMobile;
 
       setDeviceType({ isMobile, isDesktop });
