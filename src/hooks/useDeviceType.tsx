@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 export function useDeviceType() {
   const [deviceType, setDeviceType] = useState({
     isMobile: false,
-    isDesktop: false,
+    isDesktop: true,
   });
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const handleResize = () => {
@@ -13,6 +14,7 @@ export function useDeviceType() {
       const isDesktop = !isMobile;
 
       setDeviceType({ isMobile, isDesktop });
+      setIsLoading(false);
     };
 
     handleResize();
@@ -23,5 +25,5 @@ export function useDeviceType() {
     };
   }, []);
 
-  return deviceType;
+  return [deviceType, isLoading] as const;
 }
