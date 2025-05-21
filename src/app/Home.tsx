@@ -9,7 +9,8 @@ import { useDeviceType } from "@/hooks/useDeviceType";
 import { SiCss3, SiElectron, SiHtml5, SiReact, SiSqlite, SiTailwindcss, SiTypescript } from "react-icons/si";
 
 export default function Home() {
-  const [{ isMobile, isDesktop }, isLoading] = useDeviceType();
+  const [deviceType, isLoading] = useDeviceType();
+  const { isMobile, isDesktop } = deviceType;
 
   return (
     <>
