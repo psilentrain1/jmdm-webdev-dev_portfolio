@@ -1,7 +1,7 @@
 {
   "name": "jmdm-webdev-dev_portfolio",
-  "version": "3.0",
-  "private": true,
+  "version": "3.1",
+  "private": false,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",

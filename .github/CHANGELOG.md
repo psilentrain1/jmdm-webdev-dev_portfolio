@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v3.1
+
+1. Bugfixes
+1. Improved home page formatting on mobile devices
+
 ## v3.0
 
 1. Added front page projects

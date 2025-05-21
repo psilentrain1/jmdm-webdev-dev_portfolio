@@ -6,7 +6,8 @@ import { useDeviceType } from "@/hooks/useDeviceType";
 import { DesktopHeader, MobileHeader, Sidebar, Hamburger } from "@/components/PostComponents";
 
 export function PostsPageHeader() {
-  const { isMobile, isDesktop } = useDeviceType();
+  const [deviceType] = useDeviceType();
+  const { isMobile, isDesktop } = deviceType;
 
   return (
     <>
@@ -18,7 +19,8 @@ export function PostsPageHeader() {
 }
 
 export function PostsPageSidebar() {
-  const { isDesktop } = useDeviceType();
+  const [deviceType] = useDeviceType();
+  const { isDesktop } = deviceType;
 
   return <>{isDesktop && <Sidebar />}</>;
 }
