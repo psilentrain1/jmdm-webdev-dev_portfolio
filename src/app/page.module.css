@@ -75,6 +75,7 @@
   padding: 60px;
   background-color: var(--clr-primary-50);
   color: var(--txt-dark);
+  min-width: 0;
 }
 
 .home__content section {
@@ -111,10 +112,14 @@
 
 .home__title h1 {
   line-height: 3rem;
+  white-space: nowrap;
+  font-size: clamp(1.8rem, -0.25rem + 8vw, 6rem);
 }
 
 .home__title span {
   font: var(--font-subhead-1);
+  white-space: nowrap;
+  font-size: clamp(1rem, -0.25rem + 4vw, 3rem);
 }
 
 .home__about,
@@ -123,18 +128,18 @@
   margin-bottom: 50px;
 }
 
-.home__about {
+/* .home__about {
 }
 
 .home__sectionlink {
-}
+} */
 
 .home__sectionlink::after {
   content: " \00bb";
 }
 
-.home__projects {
-}
+/* .home__projects {
+} */
 
 .home__project_container {
   margin: 20px 0;
@@ -160,14 +165,14 @@
   font-size: 1.5rem;
 }
 
-.home__project_description {
+/* .home__project_description {
 }
 
 .home__project_links {
 }
 
 .home__contacts {
-}
+} */
 
 .home__contacts button {
   margin: 20px 0;
