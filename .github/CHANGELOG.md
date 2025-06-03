@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v3.2
+
+1. Security patch: forced update of package `tar-fs`
+
 ## v3.1
 
 1. Bugfixes
