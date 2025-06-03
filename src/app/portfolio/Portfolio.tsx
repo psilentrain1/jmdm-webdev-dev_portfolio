@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Project } from "@/types/app.types";
+import projectList from "./projects.json";
 
 export default function Portfolio() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -8,8 +9,8 @@ export default function Portfolio() {
   const [selectedTech, setSelectedTech] = useState<string>("all");
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
 
-  useEffect(() => {
-    fetch("./projects.json")
+  /*  useEffect(() => {
+    fetch("/api/projects")
       .then((response) => response.json())
       .then((data: Project[]) => {
         console.log(data);
@@ -24,6 +25,18 @@ export default function Portfolio() {
       })
       // Swap this out to add to log
       .catch((error) => console.error("Error fetching projects:", error));
+  }, []); */
+
+  useEffect(() => {
+    console.log("Projects loaded:", projectList);
+
+    setProjects(projectList);
+    const techSet = new Set<string>();
+    projectList.forEach((project) => {
+      project.tech.forEach((tech) => techSet.add(tech));
+    });
+
+    setTechnologies(Array.from(techSet));
   }, []);
 
   function handleSort() {
@@ -67,7 +80,7 @@ export default function Portfolio() {
         {displayedProjects.map((project, index) => (
           <div key={index} className="project">
             <div className="project-image">
-              <img src={project.image || ""} alt={`Screenshot of ${project.title}`} />
+              <img src={project.image || null} alt={`Screenshot of ${project.title}`} />
             </div>
             <div className="project-info">
               <h3>{project.title}</h3>
