@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "better-sqlite3": "^11.10.0",
+    "better-sqlite3": "^11.8.1",
     "highlight.js": "^11.11.1",
     "next": "15.2.4",
     "next-auth": "^4.24.11",
