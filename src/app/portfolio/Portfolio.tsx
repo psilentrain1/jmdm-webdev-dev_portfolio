@@ -10,24 +10,6 @@ export default function Portfolio() {
   const [selectedTech, setSelectedTech] = useState<string>("all");
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
 
-  /*  useEffect(() => {
-    fetch("/api/projects")
-      .then((response) => response.json())
-      .then((data: Project[]) => {
-        console.log(data);
-        setProjects(data);
-
-        const techSet = new Set<string>();
-        data.forEach((project) => {
-          project.tech.forEach((tech) => techSet.add(tech));
-        });
-
-        setTechnologies(Array.from(techSet));
-      })
-      // Swap this out to add to log
-      .catch((error) => console.error("Error fetching projects:", error));
-  }, []); */
-
   useEffect(() => {
     console.log("Projects loaded:", projectList);
 
@@ -87,8 +69,6 @@ export default function Portfolio() {
               <h3 className={styles.project_title}>{project.title}</h3>
               <p className={styles.project_description}>{project.description}</p>
               <div className={styles.project_tech_container}>
-                {/* <strong>Technologies: </strong>
-                {project.tech.join(", ")} */}
                 {project.tech.map((tech, index) => (
                   <span key={index} className={styles.project_tech}>
                     {tech}
