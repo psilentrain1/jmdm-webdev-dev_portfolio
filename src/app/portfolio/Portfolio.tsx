@@ -62,9 +62,8 @@ export default function Portfolio() {
       <div id="projects" className={styles.project_container}>
         {displayedProjects.map((project, index) => (
           <div key={index} className={styles.project}>
-            <div className={styles.project_image}>
-              <img src={project.image || null} alt={`Screenshot of ${project.title}`} />
-            </div>
+            {/* TODO: Add images */}
+            <div className={styles.project_image}>{/* <img src={project.image || null} alt={`Screenshot of ${project.title}`} /> */}</div>
             <div className={styles.project_info}>
               <h3 className={styles.project_title}>{project.title}</h3>
               <p className={styles.project_description}>{project.description}</p>
