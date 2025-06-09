@@ -1,3 +1,9 @@
+.filterSort {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
 .project_container {
   margin: 1rem 0;
   display: grid;
@@ -9,9 +15,6 @@
   padding: 1rem;
   background-color: var(--clr-primary-200);
   border-radius: 0.5rem;
-}
-
-.project_info {
 }
 
 .project_info h3 {

@@ -57,7 +57,7 @@ export default function Portfolio() {
   return (
     <>
       <h2>Projects</h2>
-      <div className="filterSort">
+      <div className={styles.filterSort}>
         <div>
           <label htmlFor="filter">Technology: </label>
           <select name="filter" id="filter" value={selectedTech} onChange={(e) => setSelectedTech(e.target.value)}>
