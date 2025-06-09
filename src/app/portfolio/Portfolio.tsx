@@ -38,7 +38,7 @@ export default function Portfolio() {
 
   return (
     <>
-      <h2>Projects</h2>
+      <h2>Portfolio</h2>
       <div className={styles.filterSort}>
         <div>
           <label htmlFor="filter">Technology: </label>
