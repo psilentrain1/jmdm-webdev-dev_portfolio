@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Project } from "@/types/app.types";
+import styles from "./page.module.css";
 import projectList from "./projects.json";
 
 export default function Portfolio() {
@@ -76,20 +77,25 @@ export default function Portfolio() {
         </div>
       </div>
 
-      <div id="projects" className="project_container">
+      <div id="projects" className={styles.project_container}>
         {displayedProjects.map((project, index) => (
-          <div key={index} className="project">
-            <div className="project-image">
+          <div key={index} className={styles.project}>
+            <div className={styles.project_image}>
               <img src={project.image || null} alt={`Screenshot of ${project.title}`} />
             </div>
-            <div className="project-info">
-              <h3>{project.title}</h3>
-              <p>{project.description}</p>
-              <p>
-                <strong>Technologies: </strong>
-                {project.tech.join(", ")}
-              </p>
-              <div className="links">
+            <div className={styles.project_info}>
+              <h3 className={styles.project_title}>{project.title}</h3>
+              <p className={styles.project_description}>{project.description}</p>
+              <div className={styles.project_tech_container}>
+                {/* <strong>Technologies: </strong>
+                {project.tech.join(", ")} */}
+                {project.tech.map((tech, index) => (
+                  <span key={index} className={styles.project_tech}>
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              <div className={styles.project_links}>
                 {project.github && (
                   <a href={project.github} target="_blank" rel="noopener noreferrer">
                     GitHub
