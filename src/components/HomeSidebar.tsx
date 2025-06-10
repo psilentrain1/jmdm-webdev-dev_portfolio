@@ -20,10 +20,9 @@ export default function Sidebar() {
               <li>
                 <Link href="/#about">About</Link>
               </li>
-              {/* Temporarily disabling until there is content for this section. */}
-              {/* <li>
-                      <Link href="/#projects">Projects</Link>
-                    </li> */}
+              <li>
+                <Link href="/portfolio">Portfolio</Link>
+              </li>
               <li>
                 <Link href="/posts">Posts</Link>
               </li>

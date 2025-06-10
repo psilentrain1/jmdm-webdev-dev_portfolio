@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v4.0
+
+1. Added Portfolio page :raised_hands::tada:
+
 ## v3.2
 
 1. Security patch: forced update of package `tar-fs`
