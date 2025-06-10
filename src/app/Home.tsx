@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./page.module.css";
+import HomeLayoutComponent from "@/components/HomeLayout";
 import { useDeviceType } from "@/hooks/useDeviceType";
 import { SiCss3, SiElectron, SiHtml5, SiReact, SiSqlite, SiTailwindcss, SiTypescript } from "react-icons/si";
 
@@ -9,7 +10,7 @@ export default function Home() {
   const [deviceType, isLoading] = useDeviceType();
   const { isMobile } = deviceType;
 
-  return (
+  const HomePageContent = (
     <>
       {isLoading ? (
         <div>{}</div>
@@ -99,6 +100,8 @@ export default function Home() {
       )}
     </>
   );
+
+  return <HomeLayoutComponent content={HomePageContent} />;
 }
 
 function MobileImage() {

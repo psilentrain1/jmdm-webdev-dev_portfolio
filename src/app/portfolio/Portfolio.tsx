@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { Project } from "@/types/app.types";
 import styles from "./page.module.css";
+import HomeLayoutComponent from "@/components/HomeLayout";
 import projectList from "./projects.json";
 
 export default function Portfolio() {
@@ -36,7 +37,7 @@ export default function Portfolio() {
       }
     });
 
-  return (
+  const PortfolioContent = (
     <>
       <h2>Portfolio</h2>
       <div className={styles.filterSort}>
@@ -92,4 +93,6 @@ export default function Portfolio() {
       </div>
     </>
   );
+
+  return <HomeLayoutComponent content={PortfolioContent} />;
 }

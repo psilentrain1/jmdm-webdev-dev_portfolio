@@ -1,4 +1,5 @@
 "use client";
+import { ReactNode } from "react";
 import Link from "next/link";
 import Script from "next/script";
 import styles from "../app/page.module.css";
@@ -6,7 +7,7 @@ import Sidebar from "@/components/HomeSidebar";
 import Hamburger from "@/components/HomeHamburger";
 import { useDeviceType } from "@/hooks/useDeviceType";
 
-export default function HomeLayoutComponent({ children }: { children: React.ReactNode }) {
+export default function HomeLayoutComponent({ content }: { content: ReactNode }) {
   const [deviceType, isLoading] = useDeviceType();
   const { isMobile, isDesktop } = deviceType;
 
@@ -22,7 +23,7 @@ export default function HomeLayoutComponent({ children }: { children: React.Reac
               {isDesktop && <Sidebar />}
               {isMobile && <Hamburger />}
               <div className={styles.home__content}>
-                {children}
+                {content}
 
                 <footer className={styles.home__footer}>
                   &copy; 2025 James Drake. All rights reserved. <Link href="/privacy">Privacy Policy</Link>
