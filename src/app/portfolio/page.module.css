@@ -54,3 +54,10 @@
   font: var(--font-body-text);
   font-size: 1.2rem;
 }
+
+/* Mobile */
+@media screen and (max-width: 850px) {
+  .project_container {
+    grid-template-columns: 1fr;
+  }
+}
