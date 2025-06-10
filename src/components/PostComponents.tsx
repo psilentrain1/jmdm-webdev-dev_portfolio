@@ -19,7 +19,7 @@ export function DesktopHeader() {
               <Link href="/#about">About</Link>
             </li>
             <li>
-              <Link href="/#projects">Projects</Link>
+              <Link href="/portfolio">Portfolio</Link>
             </li>
             <li>
               <Link href="/posts">Posts</Link>
