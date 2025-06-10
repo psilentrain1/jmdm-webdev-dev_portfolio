@@ -1,3 +1,12 @@
+export interface Project {
+  title: string;
+  description: string;
+  tech: string[];
+  demo?: string;
+  github?: string;
+  image?: string;
+}
+
 export interface Post {
   post_id: number;
   post_slug: string;

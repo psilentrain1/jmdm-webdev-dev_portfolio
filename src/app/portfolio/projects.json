@@ -1,0 +1,66 @@
+[
+  {
+    "title": "Tickr",
+    "description": "Tickr is a simple, lightweight app to track the performance of stocks.",
+    "tech": ["Electron", "React", "TypeScript", "SQLite", "Tailwind"],
+    "demo": "",
+    "github": "https://github.com/psilentrain1/jmdm-apps-tickr",
+    "image": ""
+  },
+  {
+    "title": "ROOTS.",
+    "description": "A simple single-page website for a community bakery.",
+    "tech": ["HTML", "CSS", "TypeScript", "Tailwind"],
+    "demo": "https://preview.jamesdraketech.com/roots",
+    "github": "https://github.com/psilentrain1/jmdm-webdev-roots",
+    "image": ""
+  },
+  {
+    "title": "Pokémon Search App",
+    "description": "An app that will search for Pokémon by name or ID and display the results to the user.",
+    "tech": ["HTML", "CSS", "JavaScript"],
+    "demo": "https://preview.jamesdraketech.com/pokemon-search-app",
+    "github": "https://github.com/psilentrain1/jmdm-fcc-pokedex",
+    "image": ""
+  },
+  {
+    "title": "Budget App",
+    "description": "A simple budget app that allows you to track your income and expenses.",
+    "tech": ["Python"],
+    "demo": "",
+    "github": "https://github.com/psilentrain1/jmdm-fcc-budget-app",
+    "image": ""
+  },
+  {
+    "title": "Polygon Area Calculator",
+    "description": "A simple app that calculates the area of and plots a polygon.",
+    "tech": ["Python"],
+    "demo": "",
+    "github": "https://github.com/psilentrain1/jmdm-fcc-polygon-area-calculator",
+    "image": ""
+  },
+  {
+    "title": "Probability Calculator",
+    "description": "A program that calculates the probability of drawing certain balls randomly from a hat.",
+    "tech": ["Python"],
+    "demo": "",
+    "github": "https://github.com/psilentrain1/jmdm-fcc-probability-calculator",
+    "image": ""
+  },
+  {
+    "title": "Magic Ball",
+    "description": "A web app that emulates the classic toy.",
+    "tech": ["HTML", "CSS", "TypeScript"],
+    "demo": "https://preview.jamesdraketech.com/magic-ball",
+    "github": "https://github.com/psilentrain1/jmdm-apps-magic-ball",
+    "image": ""
+  },
+  {
+    "title": "Dedupe",
+    "description": "A script to detect possible duplicate files in a directory.",
+    "tech": ["Python"],
+    "demo": "",
+    "github": "https://github.com/psilentrain1/jmdm-apps-dedupe",
+    "image": ""
+  }
+]

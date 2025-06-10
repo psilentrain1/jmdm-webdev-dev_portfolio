@@ -19,7 +19,7 @@ export function DesktopHeader() {
               <Link href="/#about">About</Link>
             </li>
             <li>
-              <Link href="/#projects">Projects</Link>
+              <Link href="/portfolio">Portfolio</Link>
             </li>
             <li>
               <Link href="/posts">Posts</Link>
@@ -136,9 +136,9 @@ export function Hamburger() {
           <li>
             <Link href="/#about">About</Link>
           </li>
-          {/* <li>
-              <Link href="/#projects">Projects</Link>
-            </li> */}
+          <li>
+            <Link href="/portfolio">Portfolio</Link>
+          </li>
           <li>
             <Link href="/posts">Posts</Link>
           </li>
